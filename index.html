@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antoine SOLER-MORES | Portfolio Professionnel BTS SIO SISR</title>
+    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='25' fill='%231C2541'/><text x='50%25' y='57%25' dominant-baseline='middle' text-anchor='middle' font-family='Plus Jakarta Sans, sans-serif' font-weight='800' font-size='42' fill='%230077B6'>A</text><text x='50%25' y='57%25' dominant-baseline='middle' text-anchor='middle' font-family='Plus Jakarta Sans, sans-serif' font-weight='800' font-size='42' fill='%23FFFFFF' clip-path='polygon(50%25 0%25, 100%25 0%25, 100%25 100%25, 50%25 100%25)'>S</text></svg>">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ================= VARIABLES & DESIGN SYSTEM ================= */
+        :root {
+            --color-primary-navy: #060B1A;
+            --color-secondary-blue: #111827;
+            --color-accent-blue: #0077B6;
+            --color-text-main: #1F2937;
+            --color-text-light: #6B7280;
+            --color-bg-light: #F9FAFB;
+            --color-bg-white: #FFFFFF;
+            --color-bg-dark: #F3F4F6;
+            --transition-premium: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --border-radius-m: 12px;
+            --border-radius-l: 20px;
+            --site-max-width: 1140px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body { font-family: var(--font-stack); background-color: var(--color-bg-light); color: var(--color-text-main); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+        .container { max-width: var(--site-max-width); margin: 0 auto; padding: 0 25px; }
+        .section { padding: 120px 0 100px 0; }
+        .sec-light { background-color: var(--color-bg-light); }
+        .sec-dark { background-color: var(--color-bg-dark); }
+        .section-title-area { margin-bottom: 50px; text-align: center; }
+        .section-tag { display: inline-block; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(--color-accent-blue); margin-bottom: 10px; }
+        h2 { font-size: 2.4rem; font-weight: 800; color: var(--color-primary-navy); letter-spacing: -0.5px; }
+        .section-subtitle { color: var(--color-text-light); font-size: 1.1rem; max-width: 700px; margin: 12px auto 0 auto; }
+
+        /* ================= HEADER & NAVIGATION PREMIUM ================= */
+        header { background-color: rgba(255, 255, 255, 0.9); border-bottom: 1px solid rgba(0,0,0,0.05); position: fixed; top: 0; left: 0; width: 100%; height: 80px; display: flex; justify-content: space-between; align-items: center; padding: 0 50px; z-index: 1000; backdrop-filter: blur(15px); }
+        .logo-container { display: flex; align-items: center; gap: 14px; }
+        .avatar-badge { background: linear-gradient(135deg, #1C2541 0%, #0077B6 100%); color: white; width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.95rem; box-shadow: 0 4px 10px rgba(0,119,182,0.2); }
+        .site-title { font-weight: 700; font-size: 1.1rem; color: var(--color-primary-navy); }
+        
+        nav ul { list-style: none; display: flex; gap: 28px; align-items: center; }
+        nav ul li a { text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 0.92rem; transition: var(--transition-premium); position: relative; display: block; padding: 10px 0; }
+        nav ul li a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 0; background-color: var(--color-accent-blue); transition: var(--transition-premium); }
+        nav ul li > a:hover { color: var(--color-accent-blue); }
+        nav ul li > a:hover::after { width: 100%; }
+
+        /* REGLAGES MENUS DEROULANTS (DROPDOWNS) */
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.95);
+            min-width: 240px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+            border-radius: var(--border-radius-m);
+            z-index: 1000;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(15px);
+            transition: var(--transition-premium);
+            padding: 10px 0;
+            border: 1px solid rgba(0,0,0,0.05);
+            backdrop-filter: blur(10px);
+        }
+        .dropdown:hover .dropdown-content {
+            visibility: visible;
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        .dropdown-content a {
+            color: var(--color-text-main) !important;
+            padding: 12px 20px;
+            display: block;
+            text-align: left;
+            font-size: 0.9rem !important;
+            font-weight: 600;
+        }
+        .dropdown-content a::after { display: none; }
+        .dropdown-content a:hover {
+            background-color: #F3F4F6;
+            color: var(--color-accent-blue) !important;
+        }
+
+        /* RESPONSIVE HAMBURGER BUTTON */
+        .menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 10px; z-index: 1001; }
+        .menu-toggle span { display: block; width: 25px; height: 3px; background-color: var(--color-primary-navy); margin: 5px 0; transition: var(--transition-premium); border-radius: 3px; }
+
+        /* ================= HERO ZONE ================= */
+        .hero-block { min-height: 100vh; background: radial-gradient(circle at top right, #1E293B 0%, var(--color-primary-navy) 100%); color: white; display: flex; align-items: center; justify-content: center; text-align: center; padding: 120px 20px 40px 20px; }
+        .hero-content { max-width: 900px; z-index: 2; }
+        .hero-badge { display: inline-block; background-color: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.12); padding: 7px 20px; border-radius: 50px; font-size: 0.85rem; font-weight: 600; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 1.5px; color: #93C5FD; }
+        .hero-block h1 { font-size: 4.2rem; font-weight: 800; line-height: 1.15; margin-bottom: 25px; color: #FFFFFF; letter-spacing: -1.5px; }
+        .hero-lead { font-size: 1.35rem; color: #94A3B8; margin-bottom: 35px; font-weight: 400; max-width: 750px; margin-left: auto; margin-right: auto; }
+        
+        .hero-logos { display: flex; justify-content: center; align-items: center; gap: 25px; margin-bottom: 50px; }
+        .logo-card { background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1); padding: 15px 30px; border-radius: var(--border-radius-m); backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center; transition: var(--transition-premium); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .logo-card img { height: 50px; max-width: 160px; object-fit: contain; transition: var(--transition-premium); }
+        .logo-card:hover { background: rgba(255, 255, 255, 0.09); border-color: rgba(255, 255, 255, 0.25); transform: translateY(-6px); box-shadow: 0 15px 35px rgba(0, 119, 182, 0.25); }
+        .logo-separator { color: rgba(255,255,255,0.2); font-size: 1.2rem; font-weight: 300; }
+        .hero-cta-group { display: flex; justify-content: center; gap: 20px; }
+
+        /* BOUTONS GENERALS */
+        .btn { display: inline-flex; align-items: center; justify-content: center; padding: 14px 32px; font-size: 0.95rem; font-weight: 700; border-radius: var(--border-radius-m); text-decoration: none; transition: var(--transition-premium); }
+        .btn-primary { background-color: var(--color-accent-blue); color: white; box-shadow: 0 4px 15px rgba(0, 119, 182, 0.3); }
+        .btn-primary:hover { background-color: #00669D; transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0, 119, 182, 0.45); }
+        .btn-secondary { background-color: rgba(255, 255, 255, 0.05); color: white; border: 1px solid rgba(255, 255, 255, 0.2); backdrop-filter: blur(5px); }
+        .btn-secondary:hover { background-color: var(--color-bg-white); color: var(--color-primary-navy); transform: translateY(-3px); }
+
+        /* ================= SECTIONS (ENTREPRISE / PROFIL / PROJETS) ================= */
+        .profile-layout { display: grid; grid-template-columns: 1.2fr 1fr; gap: 60px; align-items: start; }
+        .profile-description p { font-size: 1.1rem; margin-bottom: 22px; color: #374151; }
+        .profile-downloads { display: flex; flex-direction: column; gap: 20px; }
+        .download-tile { background-color: var(--color-bg-white); border: 1px solid rgba(0,0,0,0.04); border-radius: var(--border-radius-m); padding: 24px; display: flex; align-items: center; gap: 20px; transition: var(--transition-premium); box-shadow: 0 4px 15px rgba(0,0,0,0.01); }
+        .download-tile:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.05); }
+        .accent-border { border-left: 4px solid var(--color-accent-blue); }
+        .accent-orange { border-left: 4px solid #F97316; }
+        .tile-icon { font-size: 1.8rem; background-color: #F3F4F6; padding: 12px; border-radius: 10px; }
+        .tile-body h3 { font-size: 1.15rem; color: var(--color-primary-navy); font-weight: 700; margin-bottom: 4px; }
+        .btn-tile { text-decoration: none; font-size: 0.85rem; font-weight: 700; color: var(--color-accent-blue); border: 1px solid rgba(0,119,182,0.2); padding: 9px 18px; border-radius: 8px; transition: var(--transition-premium); }
+        .btn-tile:hover { background-color: var(--color-accent-blue); color: white; }
+
+        .company-showcase { background: white; border: 1px solid #E2E8F0; padding: 40px; text-align: center; border-radius: var(--border-radius-l); box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
+        .company-showcase img { max-width: 180px; height: auto; margin-bottom: 20px; }
+
+        .project-category { margin-bottom: 60px; scroll-margin-top: 100px; }
+        .category-title { font-size: 1.6rem; color: var(--color-primary-navy); margin-bottom: 25px; border-bottom: 2px solid var(--color-accent-blue); padding-bottom: 10px; display: inline-block; font-weight: 800; }
+        
+        .epreuve-card { background-color: var(--color-bg-white); border: 1px solid rgba(0,0,0,0.04); border-radius: var(--border-radius-l); padding: 45px; transition: var(--transition-premium); box-shadow: 0 10px 30px rgba(0,0,0,0.02); display: flex; flex-direction: column; gap: 20px; position: relative; overflow: hidden; }
+        .epreuve-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--color-accent-blue); }
+        .epreuve-card.orange::before { background: #F97316; }
+        .epreuve-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.06); }
+        
+        .badge { display: inline-block; font-size: 0.8rem; font-weight: 800; padding: 6px 16px; border-radius: 50px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .badge-blue { background-color: #EFF6FF; color: #1D4ED8; }
+        .badge-gold { background-color: #FFFBEB; color: #B45309; }
+        .epreuve-card h3 { font-size: 1.8rem; color: var(--color-primary-navy); font-weight: 800; }
+        .company-tag { font-size: 1rem; font-weight: 700; color: var(--color-text-light); }
+        .card-text { font-size: 1.05rem; color: #4B5563; }
+        
+        .card-sub-files { background-color: #F8FAFC; border-radius: 12px; padding: 20px; border: 1px solid #E2E8F0; }
+        .card-sub-files h4 { font-size: 0.9rem; text-transform: uppercase; color: var(--color-primary-navy); margin-bottom: 15px; }
+        .sub-file-link { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--color-accent-blue); font-weight: 700; font-size: 0.95rem; margin-right: 20px; margin-bottom: 10px; padding: 8px 16px; background: white; border-radius: 8px; border: 1px solid rgba(0,119,182,0.2); transition: var(--transition-premium); }
+        .sub-file-link:hover { background: var(--color-accent-blue); color: white; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,119,182,0.2); }
+
+        /* CERTIFS */
+        .certif-container { display: flex; gap: 15px; flex-wrap: wrap; }
+        .certif-badge { display: flex; align-items: center; gap: 10px; background-color: var(--color-bg-white); border: 1px solid #E5E7EB; padding: 12px 18px; border-radius: 10px; font-weight: 600; font-size: 0.9rem; color: var(--color-primary-navy); text-decoration: none; transition: var(--transition-premium); box-shadow: 0 2px 5px rgba(0,0,0,0.01); }
+        .certif-badge:hover { border-color: var(--color-accent-blue); background-color: #F0F9FF; transform: translateY(-3px); }
+
+        /* GRILLES PROCEDURES & VEILLES */
+        .veille-block { scroll-margin-top: 100px; }
+        .tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .tech-box { background-color: var(--color-bg-white); border: 1px solid rgba(0,0,0,0.03); border-radius: var(--border-radius-l); padding: 35px; display: flex; flex-direction: column; transition: var(--transition-premium); box-shadow: 0 4px 20px rgba(0,0,0,0.01); }
+        .tech-box:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.05); border-color: rgba(0,119,182,0.2); }
+        .tech-header { display: flex; align-items: center; gap: 14px; margin-bottom: 15px; }
+        .tech-num { font-size: 0.85rem; font-weight: 700; color: var(--color-accent-blue); background-color: #F0FDF4; padding: 4px 10px; border-radius: 6px; }
+        .tech-box h3 { font-size: 1.25rem; color: var(--color-primary-navy); font-weight: 700; }
+        .tech-link { font-size: 0.95rem; font-weight: 700; color: var(--color-accent-blue); text-decoration: none; transition: var(--transition-premium); display: inline-block; padding-top: 10px;}
+        .tech-link:hover { text-decoration: underline; color: var(--color-primary-navy); }
+        .veille-list { list-style: none; margin-bottom: 20px; flex-grow: 1; }
+        .veille-list li { font-size: 0.95rem; margin-bottom: 14px; padding-left: 22px; position: relative; }
+        .veille-list li::before { content: "→"; position: absolute; left: 0; color: var(--color-accent-blue); font-weight: bold; }
+        .veille-tag { display: inline-block; background-color: #F3F4F6; padding: 2px 10px; border-radius: 6px; font-size: 0.8rem; font-weight: 600; color: var(--color-text-light); margin-top: 5px; }
+
+        /* ================= FOOTER EXCLUSIF ================= */
+        .premium-footer-wrap { background: radial-gradient(circle at top, #111827 0%, var(--color-primary-navy) 100%); color: white; position: relative; overflow: hidden; padding-top: 80px;}
+        .contact-glass-card { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(20px); border-radius: var(--border-radius-l); padding: 50px; max-width: 800px; margin: 0 auto 80px auto; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.3); z-index: 2;}
+        .contact-glass-card h2 { color: white; margin-bottom: 15px; }
+        .contact-glass-card p { color: #9CA3AF; font-size: 1.1rem; margin-bottom: 30px; }
+        
+        .footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; border-top: 1px solid rgba(255,255,255,0.1); padding: 50px 0; max-width: var(--site-max-width); margin: 0 auto; padding-left: 25px; padding-right: 25px; }
+        .footer-col h4 { font-size: 1.1rem; font-weight: 700; color: white; margin-bottom: 20px; }
+        .footer-col p, .footer-col a { color: #9CA3AF; font-size: 0.95rem; text-decoration: none; margin-bottom: 10px; display: block; transition: var(--transition-premium); }
+        .footer-col a:hover { color: var(--color-accent-blue); padding-left: 5px; }
+        .footer-bottom { text-align: center; padding: 25px 0; background: rgba(0,0,0,0.2); font-size: 0.85rem; color: #6B7280; }
+
+        /* ================= RESPONSIVE SMARTPHONE (MENU BURGER GÉRÉ) ================= */
+        @media (max-width: 960px) {
+            header { padding: 0 25px; }
+            .menu-toggle { display: block; } /* On affiche le bouton burger */
+            
+            nav ul { display: flex; flex-direction: column; position: absolute; top: 80px; left: 0; width: 100%; background-color: rgba(255, 255, 255, 0.98); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(0,0,0,0.1); padding: 0; box-shadow: 0 10px 20px rgba(0,0,0,0.05); max-height: 0; overflow: hidden; opacity: 0; transition: all 0.4s ease-in-out; }
+            nav ul.active { max-height: 600px; padding: 20px 0; opacity: 1; }
+            nav ul li { text-align: center; margin: 10px 0; width: 100%; }
+            
+            /* Gestion responsive des sous-menus (Dropdowns) */
+            .dropdown-content { position: relative; top: 0; left: 0; transform: none; box-shadow: none; border: none; background: transparent; padding-top: 5px; display: none; visibility: visible; opacity: 1; }
+            .dropdown.active-mobile .dropdown-content { display: block; }
+            .dropdown-content a { text-align: center; padding: 6px; color: var(--color-accent-blue) !important; font-size: 0.85rem !important; }
+
+            .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+            .menu-toggle.active span:nth-child(2) { opacity: 0; }
+            .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+
+            .profile-layout, .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+            .hero-block h1 { font-size: 2.6rem; }
+            .hero-cta-group { flex-direction: column; gap: 15px; }
+            .hero-logos { flex-direction: column; gap: 20px; }
+            .contact-glass-card { margin: 0 20px 60px 20px; padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <div class="avatar-badge">AS</div>
+            <span class="site-title">Antoine SOLER-MORES</span>
+        </div>
+        
+        <button class="menu-toggle" id="mobile-menu" aria-label="Ouvrir le menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav>
+            <ul id="nav-list">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#entreprise">L'Entreprise</a></li>
+                <li><a href="#profil">Profil & TCS</a></li>
+                
+                <li class="dropdown">
+                    <a href="#projets" class="dropbtn">Projets ▾</a>
+                    <div class="dropdown-content">
+                        <a href="#projet-pro">Projet Professionnel (E5)</a>
+                        <a href="#projet-perso">Projet Personnel (E6)</a>
+                    </div>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#veilles" class="dropbtn">Veilles ▾</a>
+                    <div class="dropdown-content">
+                        <a href="#veille-techno">Veille Technologique</a>
+                        <a href="#veille-juridique">Veille Réglementaire / Juridique</a>
+                    </div>
+                </li>
+
+                <li><a href="#infrastructure">Documentation</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="accueil" class="hero-block">
+        <div class="hero-content">
+            <span class="hero-badge">BTS SIO — Option SISR</span>
+            <h1>Système, Support IT, Sécurité et Réseau</h1>
+            <p class="hero-lead">Portfolio d'ingénierie système validant mes compétences en administration d'infrastructures et architecture réseau d'entreprise.</p>
+            
+            <div class="hero-logos">
+                <div class="logo-card"><img src="logo-orange.png" alt="Orange"></div> 
+                <span class="logo-separator">/</span>
+                <div class="logo-card"><img src="logo-ifc.png" alt="IFC Marseille"></div>
+            </div>
+
+            <div class="hero-cta-group">
+                <a href="#entreprise" class="btn btn-primary">Découvrir mon alternance</a>
+                <a href="#projets" class="btn btn-secondary">Voir mes Projets</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="entreprise" class="section sec-light">
+        <div class="container">
+            <div class="section-title-area">
+                <span class="section-tag">Contexte Professionnel</span>
+                <h2>Mon Alternance : Orange</h2>
+            </div>
+            
+            <div class="profile-layout" style="align-items: center;">
+                <div class="profile-description">
+                    <p>Dans le cadre de mon <strong>BTS SIO option SISR</strong>, j'effectue mon alternance au sein du groupe <strong>Orange</strong> à Marseille. L'entreprise est un leader incontournable spécialisé dans l'internet, l'informatique, les réseaux, la téléphonie et la cybersécurité.</p>
+                    <p>J'y occupe le poste de <strong>Technicien Soutien Proximité</strong> au sein du service informatique, sous la tutelle de mon maître d'alternance, M. Franck Pouilly. J'interviens au cœur des infrastructures pour maintenir la continuité des services et traiter méthodiquement les demandes d'assistance des utilisateurs.</p>
+                    <p>Cette immersion en grand groupe me permet de valider des compétences solides en déploiement, en gestion de patrimoine informatique et en résolution d'incidents complexes.</p>
+                </div>
+                <div class="company-showcase">
+                    <img src="logo-orange.png" alt="Logo Orange">
+                    <h3 style="color: var(--color-primary-navy); font-size: 1.2rem;">Technicien Soutien Proximité</h3>
+                    <p style="color: var(--color-text-light); font-size: 0.95rem; margin-top: 5px;">Marseille - Secteur Informatique & Réseaux</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="profil" class="section sec-dark">
+        <div class="container">
+            <div class="section-title-area">
+                <span class="section-tag">Curriculum</span>
+                <h2>Profil, Certifications & TCS</h2>
+            </div>
+            
+            <div class="profile-layout">
+                <div class="profile-description">
+                    <p>Futur diplômé du <strong>BTS SIO option SISR</strong>, j'articule mes compétences autour du support informatique de proximité, de l'administration système, du déploiement réseau et de la cybersécurité des infrastructures.</p>
+                    
+                    <div style="margin-top: 35px;">
+                        <h3 style="color: var(--color-primary-navy); font-size: 1.15rem; margin-bottom: 15px; font-weight: 700;">Certifications & Habilitations Validées :</h3>
+                        <div class="certif-container">
+                            <a href="https://www.credly.com/badges/3df6e799-42db-41ce-b2b4-e6b3bab06dd5/public_url" target="_blank" class="certif-badge">
+                                <span class="certif-icon">🌐</span> Cisco Networking Academy
+                            </a>
+                            <div class="certif-badge"><span class="certif-icon">🛡️</span> SecNumAcadémie (ANSSI)</div>
+                            <div class="certif-badge"><span class="certif-icon">⛑️</span> Sauveteur Secouriste du Travail (SST)</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="profile-downloads">
+                    <div class="download-tile accent-border">
+                        <div class="tile-icon">📋</div>
+                        <div class="tile-body">
+                            <h3>Curriculum Vitae</h3>
+                            <a href="Antoine Soler-Mores CV - IFC 2-2.pdf" target="_blank" class="btn-tile">Visualiser le CV</a>
+                        </div>
+                    </div>
+
+                    <div class="download-tile accent-orange">
+                        <div class="tile-icon">📊</div>
+                        <div class="tile-body">
+                            <h3>Tableau de Synthèse (TCS)</h3>
+                            <a href="TCS_session_2027_SISR-2-1.pdf" target="_blank" class="btn-tile">Consulter le TCS</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projets" class="section sec-light">
+        <div class="container">
+            <div class="section-title-area text-center">
+                <span class="section-tag">Épreuves d'État</span>
+                <h2>Projets & Réalisations</h2>
+            </div>
+
+            <div id="projet-pro" class="project-category">
+                <h3 class="category-title">💼 Projet Professionnel (Alternance)</h3>
+                <div class="epreuve-card orange">
+                    <div>
+                        <span class="badge badge-gold">Épreuve E5</span>
+                        <h3>Support et mise à disposition des services</h3>
+                        <span class="company-tag">Contexte : Orange (Marseille)</span>
+                        <p class="card-text">Dossier technique articulé autour de la gestion patrimoniale informatique, du traitement méthodique des incidents complexes de niveau 2/3 et du soutien utilisateur de proximité en entreprise.</p>
+                    </div>
+                    <div class="card-sub-files">
+                        <a href="E5-1.pdf" target="_blank" class="sub-file-link">📄 Consulter le Dossier E5 (Orange)</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="projet-perso" class="project-category">
+                <h3 class="category-title">🎓 Projet Personnel & Scolaire</h3>
+                <div class="epreuve-card">
+                    <div>
+                        <span class="badge badge-blue">Épreuve E6</span>
+                        <h3>Administration des systèmes et des réseaux</h3>
+                        <span class="company-tag">Contexte : Agence ImmoSud (Maquette d'étude)</span>
+                        <p class="card-text">Projet complet d'analyse de besoins, conception réseau (segmentation), configuration de services Windows Server redondés, infrastructure mail collaborative et outil de supervision Zabbix.</p>
+                    </div>
+                    <div class="card-sub-files">
+                        <h4>Fichiers de la conception :</h4>
+                        <a href="Dossier_E6_SOLER-MORES_Antoine(1).pdf" target="_blank" class="sub-file-link">📄 Dossier Principal E6 (ImmoSud)</a>
+                        <a href="SOLER_MORESAntoineE6ProcedureCPVMP_411568e2ba93cc169ae0787bafd6e560.pdf" target="_blank" class="sub-file-link">⚙️ Procédure : VM Proxmox</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="veilles" class="section sec-dark">
+        <div class="container">
+            <div class="section-title-area">
+                <span class="section-tag">Analyse Marché & Réglementation</span>
+                <h2>Veilles SIO SISR</h2>
+            </div>
+            
+            <div class="tech-grid">
+                <div id="veille-techno" class="tech-box veille-block" style="border-top: 4px solid var(--color-accent-blue);">
+                    <div class="tech-icon-large">📡</div>
+                    <h3>Veille Technologique</h3>
+                    <p style="margin-bottom: 15px;">Suivi continu des innovations concernant les infrastructures matérielles, logicielles et les architectures systèmes virtualisées.</p>
+                    <ul class="veille-list">
+                        <li><strong>Virtualisation :</strong> <span class="veille-tag">Proxmox VE 8.x</span> <span class="veille-tag">Hyper-V Server</span></li>
+                        <li><strong>Supervision :</strong> <span class="veille-tag">Zabbix 7.0 LTS+</span> <span class="veille-tag">Grafana Dashboards</span></li>
+                        <li><strong>Réseau & Pare-feu :</strong> <span class="veille-tag">pfSense Firewalls</span> <span class="veille-tag">Cisco IOS</span></li>
+                    </ul>
+                </div>
+
+                <div id="veille-juridique" class="tech-box veille-block" style="border-top: 4px solid #F97316;">
+                    <div class="tech-icon-large">⚖️</div>
+                    <h3>Veille Réglementaire & Juridique</h3>
+                    <p style="margin-bottom: 15px;">Maintien de la conformité légale, protection des patrimoines informatiques et suivi des grandes directives de cybersécurité.</p>
+                    <ul class="veille-list">
+                        <li><strong>Législations Européennes :</strong> <span class="veille-tag">Directive NIS 2</span> <span class="veille-tag">Réglementation DORA</span></li>
+                        <li><strong>Gouvernance des Données :</strong> <span class="veille-tag">RGPD</span> <span class="veille-tag">Directives CNIL</span></li>
+                        <li><strong>Sécurisation Étatique :</strong> <span class="veille-tag">Guide d'Hygiène ANSSI</span> <span class="veille-tag">SecNumCloud</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="infrastructure" class="section sec-light">
+        <div class="container">
+            <div class="section-title-area">
+                <span class="section-tag">Ingénierie Système</span>
+                <h2>Procédures d'Exploitation</h2>
+            </div>
+            <div class="tech-grid">
+                <div class="tech-box"><div class="tech-header"><span class="tech-num">01</span><h3>Cartographie Réseau</h3></div><p>Schéma logique/physique (pfSense, VLANs).</p><a href="image.pdf" target="_blank" class="tech-link">Ouvrir l'image</a></div>
+                <div class="tech-box"><div class="tech-header"><span class="tech-num">02</span><h3>Contrôleur AD1</h3></div><p>Forêt Active Directory, DNS et DHCP.</p><a href="CREATION VM AD1.pdf" target="_blank" class="tech-link">Ouvrir Fiche AD1</a></div>
+                <div class="tech-box"><div class="tech-header"><span class="tech-num">03</span><h3>Contrôleur AD2</h3></div><p>Jonction VM pour haute disponibilité.</p><a href="CREATION VM AD2.pdf" target="_blank" class="tech-link">Ouvrir Fiche AD2</a></div>
+                <div class="tech-box"><div class="tech-header"><span class="tech-num">04</span><h3>Serveur Exchange</h3></div><p>Installation messagerie Microsoft 2019.</p><a href="INSTALLATION EXCHANGE - Copie.pdf" target="_blank" class="tech-link">Ouvrir Exchange</a></div>
+                <div class="tech-box"><div class="tech-header"><span class="tech-num">05</span><h3>Gestion GLPI</h3></div><p>GLPI 10 sur Ubuntu, liaison LDAP.</p><a href="INSTALLATION GLPI.pdf" target="_blank" class="tech-link">Ouvrir GLPI</a></div>
+                <div class="tech-box"><div class="tech-header"><span class="tech-num">06</span><h3>Zabbix (Partie 1)</h3></div><p>Serveur 7.4 basé sous Debian 13.</p><a href="INSTALLATION ZABBIX.pdf" target="_blank" class="tech-link">Zabbix Partie 1</a></div>
+                <div class="tech-box"><div class="tech-header"><span class="tech-num">07</span><h3>Zabbix (Partie 2)</h3></div><p>Configuration hôtes et agents.</p><a href="INSTALLATION ZABBIX-1.pdf" target="_blank" class="tech-link">Zabbix Partie 2</a></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="premium-footer-wrap">
+        <div class="container">
+            <div class="contact-glass-card">
+                <h2>Échangeons sur mes projets</h2>
+                <p>Besoin de vérifier mes compétences ou de plus de détails sur mes dossiers d'examen ? Je suis disponible pour en discuter.</p>
+                <a href="mailto:antoinesolermores@gmail.com" class="btn btn-primary" style="font-size: 1.1rem; padding: 16px 40px;">✉️ M'envoyer un e-mail</a>
+            </div>
+        </div>
+
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Antoine SOLER-MORES</h4>
+                <p>Candidat au BTS SIO option SISR, passionné par les infrastructures réseaux et l'administration système sécurisée.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Navigation Rapide</h4>
+                <a href="#projet-pro">Projet Professionnel (E5)</a>
+                <a href="#projet-perso">Projet Personnel (E6)</a>
+                <a href="#veille-techno">Veille Technologique</a>
+                <a href="#veille-juridique">Veille Juridique</a>
+            </div>
+            <div class="footer-col">
+                <h4>Informations Légales</h4>
+                <p>📍 Centre : IFC Marseille</p>
+                <p>🏢 Alternance : Orange</p>
+                <p>🌐 <a href="https://soler-mores-antoine-ifc2027.com/" target="_blank" style="display:inline; color:var(--color-accent-blue); font-weight:bold;">soler-mores-antoine-ifc2027.com</a></p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 - Validation Examen BTS SIO SISR — Tous droits réservés.</p>
+        </div>
+    </div>
+
+    <script>
+        const mobileBtn = document.getElementById('mobile-menu');
+        const navList = document.getElementById('nav-list');
+        const navLinks = document.querySelectorAll('#nav-list a');
+        const dropdowns = document.querySelectorAll('.dropdown');
+
+        // Déploiement du menu hamburger principal
+        mobileBtn.addEventListener('click', () => {
+            mobileBtn.classList.toggle('active');
+            navList.classList.toggle('active');
+        });
+
+        // Gestion du clic sur les dropdowns pour le format Mobile
+        dropdowns.forEach(drop => {
+            drop.addEventListener('click', (e) => {
+                if(window.innerWidth <= 960) {
+                    // Empêche le saut d'ancre direct pour ouvrir d'abord le menu
+                    drop.classList.toggle('active-mobile');
+                }
+            });
+        });
+
+        // Fermeture automatique du menu après un clic sur un lien sous-section
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileBtn.classList.remove('active');
+                navList.classList.remove('active');
+                dropdowns.forEach(d => d.classList.remove('active-mobile'));
+            });
+        });
+    </script>
+</body>
+</html>
