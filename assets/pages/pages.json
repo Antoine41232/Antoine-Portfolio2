@@ -1,0 +1,62 @@
+{
+ "cv": {
+  "preview": 1,
+  "total": 1
+ },
+ "dossier-e5": {
+  "preview": 8,
+  "total": 26
+ },
+ "dossier-e6": {
+  "preview": 8,
+  "total": 32
+ },
+ "tp-cyberpeak": {
+  "preview": 8,
+  "total": 89
+ },
+ "tp-gpo-immosud": {
+  "preview": 8,
+  "total": 73
+ },
+ "vm-ad1": {
+  "preview": 8,
+  "total": 24
+ },
+ "vm-ad2": {
+  "preview": 8,
+  "total": 10
+ },
+ "vm-artica": {
+  "preview": 8,
+  "total": 16
+ },
+ "vm-fog": {
+  "preview": 5,
+  "total": 5
+ },
+ "vm-glpi": {
+  "preview": 8,
+  "total": 17
+ },
+ "vm-unify": {
+  "preview": 5,
+  "total": 5
+ },
+ "vm-xivo": {
+  "preview": 8,
+  "total": 26
+ },
+ "vm-zabbix": {
+  "preview": 8,
+  "total": 17
+ },
+ "exchange-2019": {
+  "preview": 6,
+  "total": 6
+ },
+ "tcs": {
+  "preview": 1,
+  "total": 1
+ }
+}
