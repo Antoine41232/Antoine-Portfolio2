@@ -176,6 +176,24 @@
     addEventListener("keydown", (e) => { if (e.key === "Escape" && !modal.hidden) close(); });
   }
 
+  /* ---------- menu mobile ---------- */
+  const navToggle = document.getElementById("navToggle");
+  if (navToggle) {
+    const setNav = (open) => {
+      document.body.classList.toggle("nav-open", open);
+      navToggle.setAttribute("aria-expanded", String(open));
+      navToggle.setAttribute("aria-label", open ? "fermer le menu" : "ouvrir le menu");
+    };
+    navToggle.addEventListener("click", () =>
+      setNav(!document.body.classList.contains("nav-open"))
+    );
+    document.querySelectorAll('#mainnav a[href^="#"]').forEach((a) =>
+      a.addEventListener("click", () => setNav(false))
+    );
+    addEventListener("keydown", (e) => { if (e.key === "Escape") setNav(false); });
+    addEventListener("resize", () => { if (innerWidth > 940) setNav(false); });
+  }
+
   /* ---------- scrollspy léger ---------- */
   const navLinks = [...document.querySelectorAll('#mainnav a[href^="#"]')];
   const secs = navLinks
