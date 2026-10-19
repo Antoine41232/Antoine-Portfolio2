@@ -1,0 +1,3 @@
+# Portfolio personnel — contenu non destiné à l'indexation publique
+User-agent: *
+Disallow: /
