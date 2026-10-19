@@ -136,13 +136,15 @@
         const im = document.createElement("img");
         im.src = `assets/pages/${slug}-p${i}.jpg`;
         im.alt = `page ${i} du document`;
-        im.loading = "lazy";
+        im.decoding = "async";
+        if (i <= 2) { im.loading = "eager"; im.fetchPriority = "high"; }
+        else im.loading = "lazy";
         mPages.appendChild(im);
       }
-      if (info.total > info.preview) {
+      if (info.total > 1) {
         const p = document.createElement("p");
         p.className = "dm-end";
-        p.textContent = `aperçu des ${info.preview} premières pages — le document complet compte ${info.total} pages · bouton « télécharger » ci-dessus`;
+        p.textContent = `document complet — ${info.total} pages · cliquez sur une page pour l'agrandir, ou « télécharger » ci-dessus`;
         mPages.appendChild(p);
       }
     };
@@ -162,6 +164,8 @@
       document.body.classList.add("dm-open");
     };
     const close = () => {
+      modal.classList.remove("dm-full");
+      if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
       modal.hidden = true;
       document.body.classList.remove("dm-open");
       mPages.innerHTML = "";
@@ -173,7 +177,62 @@
       );
     });
     modal.querySelectorAll("[data-close]").forEach((el) => el.addEventListener("click", close));
-    addEventListener("keydown", (e) => { if (e.key === "Escape" && !modal.hidden) close(); });
+    /* bouton grand écran : plein écran natif si possible, sinon agrandissement CSS (iframes, iOS) */
+    const mFs = document.getElementById("dmFs");
+    const dmBox = modal.querySelector(".dm-box");
+    const exitFs = () => {
+      modal.classList.remove("dm-full");
+      if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
+    };
+    if (mFs && dmBox) {
+      mFs.addEventListener("click", () => {
+        if (modal.classList.contains("dm-full") || document.fullscreenElement) {
+          exitFs();
+          return;
+        }
+        if (dmBox.requestFullscreen) {
+          dmBox.requestFullscreen().catch(() => modal.classList.add("dm-full"));
+        } else {
+          modal.classList.add("dm-full");
+        }
+      });
+      document.addEventListener("fullscreenchange", () => {
+        if (!document.fullscreenElement) modal.classList.remove("dm-full");
+      });
+    }
+
+    /* précharge la 1re page au survol d'une carte — l'aperçu s'ouvre instantanément */
+    const preloaded = new Set();
+    document.querySelectorAll('[data-doc$=".pdf"]').forEach((el) => {
+      el.addEventListener("pointerenter", () => {
+        const slug = el.getAttribute("data-doc").split("/").pop().replace(/\.pdf$/i, "");
+        if (preloaded.has(slug)) return;
+        preloaded.add(slug);
+        for (const i of [1, 2]) {
+          const im = new Image();
+          im.src = `assets/pages/${slug}-p${i}.jpg`;
+        }
+      }, { once: true });
+    });
+
+    /* zoom plein écran sur une page */
+    const pz = document.getElementById("pageZoom");
+    const pzImg = document.getElementById("pzImg");
+    const closeZoom = () => { if (pz) { pz.hidden = true; pzImg.removeAttribute("src"); } };
+    if (pz && pzImg) {
+      mPages.addEventListener("click", (e) => {
+        if (e.target.tagName !== "IMG") return;
+        pzImg.src = e.target.src;
+        pz.hidden = false;
+      });
+      pz.addEventListener("click", closeZoom);
+    }
+    addEventListener("keydown", (e) => {
+      if (e.key !== "Escape") return;
+      if (pz && !pz.hidden) closeZoom();
+      else if (modal.classList.contains("dm-full")) exitFs();
+      else if (!modal.hidden) close();
+    });
   }
 
   /* ---------- menu mobile ---------- */

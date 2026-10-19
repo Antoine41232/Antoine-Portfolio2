@@ -544,6 +544,9 @@
       <p class="dm-title" id="dmTitle"></p>
       <div class="dm-actions">
         <a class="btn sm pri" id="dmDl" href="#" download>télécharger</a>
+        <button class="dm-fs" id="dmFs" aria-label="afficher en grand écran" title="grand écran">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+        </button>
         <button class="dm-x" data-close aria-label="fermer l'aperçu">✕</button>
       </div>
     </div>
@@ -552,6 +555,13 @@
       <img id="dmImg" alt="aperçu du document" hidden>
     </div>
   </div>
+</div>
+
+<!-- ================= ZOOM PAGE ================= -->
+<div id="pageZoom" hidden>
+  <img id="pzImg" alt="page agrandie">
+  <button class="pz-x" aria-label="fermer le zoom">✕</button>
+  <p class="pz-hint">cliquer n'importe où pour fermer · molette pour défiler</p>
 </div>
 
 <script src="main.js"></script>

@@ -4,31 +4,31 @@
   "total": 1
  },
  "dossier-e5": {
-  "preview": 8,
+  "preview": 26,
   "total": 26
  },
  "dossier-e6": {
-  "preview": 8,
+  "preview": 32,
   "total": 32
  },
  "tp-cyberpeak": {
-  "preview": 8,
+  "preview": 89,
   "total": 89
  },
  "tp-gpo-immosud": {
-  "preview": 8,
+  "preview": 73,
   "total": 73
  },
  "vm-ad1": {
-  "preview": 8,
+  "preview": 24,
   "total": 24
  },
  "vm-ad2": {
-  "preview": 8,
+  "preview": 10,
   "total": 10
  },
  "vm-artica": {
-  "preview": 8,
+  "preview": 16,
   "total": 16
  },
  "vm-fog": {
@@ -36,7 +36,7 @@
   "total": 5
  },
  "vm-glpi": {
-  "preview": 8,
+  "preview": 17,
   "total": 17
  },
  "vm-unify": {
@@ -44,11 +44,11 @@
   "total": 5
  },
  "vm-xivo": {
-  "preview": 8,
+  "preview": 26,
   "total": 26
  },
  "vm-zabbix": {
-  "preview": 8,
+  "preview": 17,
   "total": 17
  },
  "exchange-2019": {
