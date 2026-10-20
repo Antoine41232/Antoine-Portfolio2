@@ -60,7 +60,8 @@ button{font-family:inherit; cursor:pointer; background:none; border:none; color:
   transition:width .25s ease,height .25s ease,border-color .25s ease,opacity .25s ease}
 .cur-ring.big{width:56px;height:56px;border-color:var(--accent);opacity:.9}
 @media (pointer:coarse){.cur-dot,.cur-ring{display:none}}
-@media (pointer:fine){body{cursor:none} a,button{cursor:none}}
+/* le curseur natif n'est masqué que si le curseur sur mesure est réellement créé */
+body.has-cur, body.has-cur a, body.has-cur button{cursor:none}
 
 /* ---------- en-tête ---------- */
 header{

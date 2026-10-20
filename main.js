@@ -24,6 +24,7 @@
     const ring = document.createElement("div");
     dot.className = "cur-dot"; ring.className = "cur-ring";
     document.body.append(dot, ring);
+    document.body.classList.add("has-cur");
     let mx = innerWidth / 2, my = innerHeight / 2, rx = mx, ry = my;
     addEventListener("mousemove", (e) => {
       mx = e.clientX; my = e.clientY;
