@@ -55,12 +55,14 @@
       const k = Math.min(1, d / 260);
       tx = (dx / d) * MAX * k; ty = (dy / d) * MAX * 0.75 * k;
     }, { passive: true });
+    /* le suivi du curseur est doux (7 px) : il reste actif même en mode « réduire les animations » ;
+       seul le clignement, plus surprenant, respecte ce réglage */
+    (function loop() {
+      cx += (tx - cx) * 0.12; cy += (ty - cy) * 0.12;
+      iris.setAttribute("transform", `translate(${cx.toFixed(2)} ${cy.toFixed(2)})`);
+      requestAnimationFrame(loop);
+    })();
     if (!reduce) {
-      (function loop() {
-        cx += (tx - cx) * 0.12; cy += (ty - cy) * 0.12;
-        iris.setAttribute("transform", `translate(${cx.toFixed(2)} ${cy.toFixed(2)})`);
-        requestAnimationFrame(loop);
-      })();
       /* clignement discret */
       const gEl = eye.querySelector("#eyeG");
       const blink = () => {
