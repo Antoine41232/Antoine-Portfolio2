@@ -19,13 +19,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=46">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 62' fill='none'%3E%3Cpath d='M4 31 C 22 8, 78 8, 96 31 C 78 54, 22 54, 4 31 Z' stroke='%231c1a16' stroke-width='4'/%3E%3Ccircle cx='50' cy='31' r='13.5' stroke='%23b08d3e' stroke-width='4'/%3E%3Ccircle cx='50' cy='31' r='6' fill='%231c1a16'/%3E%3C/svg%3E">
 </head>
 <body>
 
 <header>
-  <div class="wrap hbar">
+  <div class="hbar">
     <a class="logo" href="#">
       <span class="mono">as<b>·</b>m</span>
       <span class="name">Antoine Soler-Mores</span>
@@ -38,7 +38,13 @@
       <a href="#veilles">veilles</a>
       <a href="#documentation">documentation</a>
       <a href="#contact">contact</a>
+      <div class="nav-foot">
+        <a href="mailto:antoinesolermores@gmail.com">antoinesolermores@gmail.com</a>
+        <span>France — <b>disponible · alternance</b></span>
+      </div>
     </nav>
+    <span class="hsect" id="hSect" aria-hidden="true"><b>A/00</b> · accueil</span>
+    <span class="hscroll" id="hScroll" aria-hidden="true">scroll — 000%</span>
     <div class="hactions">
       <button id="navToggle" aria-label="ouvrir le menu" aria-expanded="false"><span></span><span></span></button>
       <button id="themeToggle" aria-label="changer de thème">
@@ -52,26 +58,51 @@
 
 <!-- ================= HÉROS ================= -->
 <div class="hero">
-  <div class="wrap">
-    <p class="kicker">Antoine Soler-Mores — BTS SIO · option SISR</p>
-    <h1 class="rv">Bien faire,<br><em>puis l'écrire</em>.<span class="eye"><svg id="eyeSvg" viewBox="0 0 100 62" aria-hidden="true">
-      <g id="eyeG">
-        <path class="outline" d="M6 31 Q50 -4 94 31 Q50 66 6 31 Z"/>
-        <g class="irisG">
-          <circle class="iris" cx="50" cy="31" r="13.5"/>
-          <circle class="pupil" cx="50" cy="31" r="6"/>
-        </g>
-      </g>
-    </svg></span></h1>
-    <p class="sub rv d1">Étudiant en <b>BTS SIO option SISR</b> à l'IFC Marseille, en alternance chez <b>Orange</b> comme technicien soutien de proximité. Une intervention n'est terminée que lorsqu'elle est documentée.</p>
-    <div class="cta-row rv d2">
-      <a class="btn pri" href="#apropos">découvrir mon profil</a>
-      <a class="btn" href="#projets">voir mes projets</a>
+  <div class="wrap hero-wrap">
+    <p class="hero-meta rv"><span>A/00 · accueil</span><span class="hm-mid">portefeuille — édition 2026</span><span>France<span class="hm-geo"> · 46.54° N, 2.43° E</span></span></p>
+    <div class="hero-cols">
+      <div class="hero-main">
+        <h1 class="rv">Bien faire,<br><em>puis l'écrire</em>.</h1>
+        <p class="sub rv d1">Étudiant en <b>BTS SIO option SISR</b> à l'IFC Marseille, en alternance chez <b>Orange</b> comme technicien soutien de proximité. Une intervention n'est terminée que lorsqu'elle est documentée.</p>
+        <dl class="spec-rows rv d2">
+          <div><dt>modèle</dt><dd>SOLER-MORES · Antoine</dd></div>
+          <div><dt>statut</dt><dd>BTS SIO SISR — 2<sup>e</sup> année · IFC Marseille</dd></div>
+          <div><dt>terrain</dt><dd>Orange — support N1–N2 · ≈ 1 200 utilisateurs</dd></div>
+          <div><dt>objectif</dt><dd>bachelor → mastère</dd></div>
+        </dl>
+        <div class="cta-row rv d3">
+          <a class="btn pri" href="#apropos">découvrir mon profil</a>
+          <a class="btn" href="#projets">voir mes projets</a>
+        </div>
+      </div>
+      <figure class="hero-fig rv d2">
+        <div class="fig-frame" id="figFrame" role="button" tabindex="0" aria-expanded="false" aria-label="Œil signature — appuyer pour afficher le relevé technique">
+          <span class="fig-corner fc-tl">fig. 01</span>
+          <span class="fig-corner fc-tr">œil · 01</span>
+          <svg id="eyeSvg" viewBox="0 0 100 62" aria-hidden="true">
+            <g id="eyeG">
+              <path class="outline" d="M6 31 Q50 -4 94 31 Q50 66 6 31 Z"/>
+              <g class="irisG">
+                <circle class="iris" cx="50" cy="31" r="13.5"/>
+                <circle class="pupil" cx="50" cy="31" r="6"/>
+              </g>
+            </g>
+          </svg>
+          <span class="en vert"><em>clignement · 3,8 – 7 s</em><b class="ln"></b><i></i></span>
+          <span class="en en-gl"><em>contour · path quadratique</em><b class="ln"></b><i></i></span>
+          <span class="en rev en-gr"><i></i><b class="ln"></b><em>iris · r = 13,5</em></span>
+          <span class="en en-bl"><em>pupille · r = 6 · suit le curseur</em><b class="ln"></b><i></i></span>
+          <span class="en rev en-br"><i></i><b class="ln"></b><em>lissage · lerp 0,12 · ±7 px</em></span>
+          <span class="fig-dim">|←&nbsp;&nbsp;&nbsp;100 × 62&nbsp;&nbsp;&nbsp;→|</span>
+          <span class="fig-corner fc-bl" id="figState">suit le curseur</span>
+          <span class="fig-corner fc-br" id="figHint">appuyer · détails</span>
+        </div>
+      </figure>
     </div>
     <div class="brand-row rv d3">
-      <span class="brand-chip"><img src="assets/orange.png" alt="Orange">alternance · Orange</span>
+      <span class="brand"><img class="b-o" src="assets/orange.svg" alt="Orange"><span class="bl"><b>alternance</b><i>terrain — support N1–N2</i></span></span>
       <span class="brand-sep">×</span>
-      <span class="brand-chip"><img src="assets/ifc.png" alt="IFC Marseille" style="height:16px">formation · IFC Marseille</span>
+      <span class="brand"><img class="b-i" src="assets/ifc.png" alt="IFC Marseille"><span class="bl"><b>formation</b><i>BTS SIO SISR — session 2027</i></span></span>
     </div>
   </div>
   <span class="scroll-hint">défiler</span>
@@ -80,7 +111,7 @@
 <!-- ================= 01 À PROPOS ================= -->
 <section id="apropos">
   <div class="wrap">
-    <div class="shead rv"><span class="snum">01</span><h2 class="stitle">À propos</h2></div>
+    <div class="shead rv"><span class="snum">A/01</span><h2 class="stitle">À propos</h2></div>
     <p class="ssub rv">Qui je suis, mes certifications, et le contexte de mon alternance chez Orange.</p>
     <p class="slede rv">Un profil de terrain : le support au quotidien chez Orange, l'infrastructure en laboratoire à l'IFC.</p>
     <div class="about-grid">
@@ -90,21 +121,18 @@
         <p>En parallèle, je construis des infrastructures complètes en laboratoire : réseau segmenté, <b>Active Directory</b> redondé, messagerie, supervision. L'alternance chez Orange me permet de relier cette pratique à des environnements réels, à grande échelle.</p>
         <p class="k2" style="margin-top:24px">certifications &amp; habilitations</p>
         <div class="certchips">
-          <span class="chip"><i></i>CCNA 1 — Introduction to Networks</span>
-          <span class="chip"><i></i>SST — Sauveteur Secouriste du Travail</span>
-          <span class="chip"><i></i>CACES · cat. 1, 2, 3</span>
+          <a class="chip" href="https://www.credly.com/badges/8c46e9bc-74ff-4d82-9c67-34da232f8f7c/public_url" target="_blank" rel="noopener"><i></i>CCNA 1 — Introduction to Networks <span class="vfy">↗</span></a>
+          <a class="chip" href="#certifications"><i></i>SST — Sauveteur Secouriste du Travail</a>
+          <a class="chip" href="#certifications"><i></i>CACES · cat. 1, 2, 3</a>
         </div>
         <div class="cta-row" style="margin-top:8px">
           <button class="btn sm pri" data-doc="assets/pdf/cv.pdf" data-kind="pdf" data-title="Curriculum vitæ — Antoine Soler-Mores">curriculum vitæ — aperçu</button>
           <a class="btn sm" href="#certifications">mon parcours de certifications →</a>
         </div>
       </div>
-      <div class="card rv d2">
+      <div class="card rv d2" data-detail="orange" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Ouvrir la fiche complète — Orange">
         <p class="k">à propos de l'entreprise</p>
-        <div class="logo-lock">
-          <span class="lg"><img src="assets/orange.png" alt="Orange"></span>
-        </div>
-        <h3>Orange — Marseille</h3>
+        <h3 class="with-logo"><img src="assets/orange.svg" alt="Orange">Orange — Marseille</h3>
         <p>Grand groupe français des télécommunications et du numérique : internet, informatique, réseaux, téléphonie et cybersécurité. J'y effectue mon alternance au sein du service informatique, sous la tutelle de mon maître d'apprentissage, <b>M. Franck Pouilly</b>.</p>
         <p>Poste occupé : <b>technicien soutien de proximité</b> — j'interviens au cœur des infrastructures pour maintenir la continuité de service et traiter les demandes d'assistance des utilisateurs.</p>
         <ul class="missions">
@@ -119,6 +147,7 @@
           <div class="stat"><b>5–6</b><span>interventions par jour, sur site et en boutiques</span></div>
           <div class="stat"><b>N1–N2</b><span>niveaux de support traités à l'Espace Service</span></div>
         </div>
+        <span class="v-open">ouvrir la fiche complète →</span>
       </div>
     </div>
   </div>
@@ -127,7 +156,7 @@
 <!-- ================= 02 PROJETS ================= -->
 <section id="projets">
   <div class="wrap">
-    <div class="shead rv"><span class="snum">02</span><h2 class="stitle">Projets &amp; réalisations</h2></div>
+    <div class="shead rv"><span class="snum">A/02</span><h2 class="stitle">Projets &amp; réalisations</h2></div>
     <p class="ssub rv">Mes réalisations professionnelles en alternance et mes projets scolaires d'infrastructure — les deux dossiers d'épreuves d'État du BTS SIO.</p>
     <div class="pgrid">
       <article class="card pcard rv d1">
@@ -157,7 +186,7 @@
 <!-- ================= 03 TCS ================= -->
 <section id="tcs">
   <div class="wrap">
-    <div class="shead rv"><span class="snum">03</span><h2 class="stitle">Tableau de synthèse</h2></div>
+    <div class="shead rv"><span class="snum">A/03</span><h2 class="stitle">Tableau de synthèse</h2></div>
     <div class="card tcs rv d1">
       <span class="mark">TCS</span>
       <div class="body">
@@ -173,7 +202,7 @@
 <!-- ================= 04 CERTIFICATIONS ================= -->
 <section id="certifications">
   <div class="wrap">
-    <div class="shead rv"><span class="snum">04</span><h2 class="stitle">Parcours &amp; certifications</h2></div>
+    <div class="shead rv"><span class="snum">A/04</span><h2 class="stitle">Parcours &amp; certifications</h2></div>
     <p class="ssub rv">De la logistique aux infrastructures : un parcours de certification progressif, du BTS SIO jusqu'au CCIE. Les étapes franchies sont validées, les suivantes sont planifiées — et je m'y tiens.</p>
     <div class="tl">
 
@@ -204,8 +233,8 @@
         <h4>BTS SIO — Solutions d'Infrastructure, Systèmes et Réseaux</h4>
         <p class="w">IFC Marseille · en alternance chez Orange — technicien soutien de proximité</p>
         <div class="certs">
-          <span class="cert"><span class="cl"><img src="assets/orange.png" alt="Orange"></span><span class="ct"><b>Orange — Marseille</b><i>alternance · service informatique</i></span></span>
-          <span class="cert"><span class="cl"><img src="assets/ifc.png" alt="IFC Marseille" style="max-height:16px"></span><span class="ct"><b>IFC Marseille</b><i>centre de formation · session 2027</i></span></span>
+          <span class="cert" data-detail="orange" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Ouvrir la fiche Orange"><span class="cl"><img src="assets/orange.svg" alt="Orange"></span><span class="ct"><b>Orange — Marseille</b><i>alternance · service informatique · <span class="vfy">fiche ↗</span></i></span></span>
+          <span class="cert" data-detail="bts" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Ouvrir la fiche BTS SIO SISR"><span class="cl"><img src="assets/ifc.png" alt="IFC Marseille"></span><span class="ct"><b>IFC Marseille</b><i>BTS SIO SISR · centre de formation · <span class="vfy">fiche ↗</span></i></span></span>
         </div>
       </div>
 
@@ -256,72 +285,38 @@
 <!-- ================= 05 VEILLES ================= -->
 <section id="veilles">
   <div class="wrap">
-    <div class="shead rv"><span class="snum">05</span><h2 class="stitle">Veilles</h2></div>
-    <p class="ssub rv">Deux veilles tenues dans la durée : une veille <b>juridique</b> sur la directive NIS2, et une veille <b>technologique</b> sur l'authentification multifacteur et le Zero Trust. La méthode, les analyses, puis le journal de suivi.</p>
+    <div class="shead rv"><span class="snum">A/05</span><h2 class="stitle">Veilles</h2></div>
+    <p class="ssub rv">Une <b>veille</b>, c'est surveiller un sujet dans la durée pour ne jamais être dépassé : <b>collecter</b> chaque semaine (CERT-FR, ANSSI, presse IT), <b>trier</b> selon la fiabilité de la source, <b>consigner</b> ce qui compte — une veille qui n'est pas consignée n'existe pas. J'en tiens deux : une <b>juridique</b>, une <b>technologique</b>. Chacune s'ouvre : création, chronologie, application concrète.</p>
 
-    <!-- méthode -->
-    <div class="method rv">
-      <div class="card">
-        <span class="num">1</span>
-        <h4>Collecter</h4>
-        <p>Flux RSS et alertes suivis chaque semaine : avis du CERT-FR — remontés en direct ci-dessous —, publications de l'ANSSI, presse IT française.</p>
+    <!-- les deux veilles -->
+    <div class="vgrid">
+      <article class="card vcard rv" data-detail="nis2" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Ouvrir la veille juridique — directive NIS2">
+        <div class="v-top"><span class="jtag j">juridique · réglementation</span><span class="v-upd">créée · oct. 2024</span></div>
+        <h3>Directive NIS2 — la cybersécurité devient une obligation</h3>
+        <p>Le texte européen qui impose aux télécoms, banques et infrastructures critiques de sécuriser leurs systèmes — et de le prouver. Directement lié à mon terrain : Orange est une entité essentielle.</p>
         <div class="srcchips">
-          <span class="chip"><i></i>CERT-FR</span>
           <span class="chip"><i></i>ANSSI</span>
-          <span class="chip"><i></i>IT-Connect</span>
-          <span class="chip"><i></i>Journal du Net</span>
-          <span class="chip"><i></i>ZDNet</span>
+          <span class="chip"><i></i>EUR-Lex</span>
+          <span class="chip"><i></i>CERT-FR</span>
         </div>
-      </div>
-      <div class="card">
-        <span class="num">2</span>
-        <h4>Trier</h4>
-        <p>Chaque information est classée : juridique ou technologique, puis évaluée par sa source — un avis officiel ne pèse pas comme un article de presse.</p>
-      </div>
-      <div class="card">
-        <span class="num">3</span>
-        <h4>Consigner</h4>
-        <p>Les entrées retenues rejoignent le journal ci-dessous : date, résumé, source. Une veille qui n'est pas consignée n'existe pas.</p>
-      </div>
-    </div>
-
-    <!-- analyses -->
-    <div class="analysis">
-      <article class="card rv">
-        <p class="k">veille juridique · réglementation</p>
-        <h3>Directive NIS2 — renforcement de la cybersécurité</h3>
-        <p>La directive NIS2 est un texte européen entré en vigueur pour renforcer la sécurité informatique des organisations importantes : télécommunications, banques, santé et infrastructures numériques.</p>
-        <p style="margin-bottom:2px"><b>Obligations principales :</b></p>
-        <ul>
-          <li>Sécuriser les systèmes informatiques et les chaînes de fournisseurs</li>
-          <li>Déployer l'authentification multifacteur (MFA)</li>
-          <li>Surveiller les réseaux et détecter les cyberattaques</li>
-          <li>Déclarer les incidents de sécurité aux autorités (ANSSI en France)</li>
-        </ul>
-        <p style="margin-bottom:2px"><b>Sanctions encourues :</b></p>
-        <ul>
-          <li>Jusqu'à 10 M€ ou 2 % du CA mondial — entités essentielles (comme Orange)</li>
-          <li>Jusqu'à 7 M€ ou 1,4 % du CA mondial — entités importantes</li>
-        </ul>
-        <p class="q">« Cette directive impacte directement mon futur métier : les techniciens doivent protéger les infrastructures informatiques et les données. »</p>
+        <span class="v-open">ouvrir la veille — chronologie, sanctions, application →</span>
       </article>
-      <article class="card rv d1">
-        <p class="k">veille technologique · sécurité des accès</p>
-        <h3>Authentification multifacteur — sécurité renforcée</h3>
-        <p>Le MFA existe depuis des années, mais devient obligatoire dans les entreprises avec les réglementations comme NIS2. Il s'intègre dans le modèle <b>Zero Trust</b> : vérifier chaque utilisateur et chaque accès, même à l'intérieur du réseau. Mot de passe + code temporaire : même volé, le mot de passe ne suffit plus.</p>
-        <p style="margin-bottom:2px"><b>Pourquoi cette technologie se développe :</b></p>
-        <ul>
-          <li>Augmentation constante des cyberattaques</li>
-          <li>Obligation légale portée par la directive NIS2</li>
-          <li>Protection des comptes professionnels et des données</li>
-        </ul>
-        <p class="q">« Cette technologie est utilisée dans les entreprises comme Orange pour sécuriser les comptes utilisateurs et protéger les systèmes informatiques. »</p>
+      <article class="card vcard rv d1" data-detail="mfa" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Ouvrir la veille technologique — MFA et Zero Trust">
+        <div class="v-top"><span class="jtag t">technologique · sécurité des accès</span><span class="v-upd">créée · sept. 2024</span></div>
+        <h3>MFA &amp; Zero Trust — le mot de passe ne suffit plus</h3>
+        <p>L'authentification multifacteur devient la norme en entreprise, portée par les cyberattaques et par NIS2 : vérifier chaque utilisateur et chaque accès, même à l'intérieur du réseau.</p>
+        <div class="srcchips">
+          <span class="chip"><i></i>ANSSI</span>
+          <span class="chip"><i></i>CERT-FR</span>
+          <span class="chip"><i></i>IT-Connect</span>
+        </div>
+        <span class="v-open">ouvrir la veille — chronologie, mise en pratique →</span>
       </article>
     </div>
 
     <!-- flux RSS en direct -->
     <div class="shead rv"><span class="snum">⌁</span><h2 class="stitle" style="font-size:30px">Flux en direct — CERT-FR</h2></div>
-    <p class="note rv" style="margin:-14px 0 26px">Remonté automatiquement par flux RSS à chaque visite — les toutes dernières alertes et avis officiels, sans intervention de ma part.</p>
+    <p class="note rv" style="margin:-14px 0 26px">Remonté automatiquement par flux RSS — les derniers avis officiels du CERT-FR, actualisés à chaque visite.</p>
     <div class="journal rv" id="liveJournal">
       <div class="jrow">
         <span class="jdate">…</span>
@@ -396,7 +391,7 @@
 <!-- ================= 06 DOCUMENTATION ================= -->
 <section id="documentation">
   <div class="wrap">
-    <div class="shead rv"><span class="snum">06</span><h2 class="stitle">Documentation</h2></div>
+    <div class="shead rv"><span class="snum">A/06</span><h2 class="stitle">Documentation</h2></div>
     <p class="ssub rv">Procédures d'exploitation rédigées au fil des travaux — distinguées entre contexte professionnel (épreuve E5) et contexte scolaire (épreuve E6). Cliquer sur une procédure ouvre l'aperçu, le téléchargement reste un choix.</p>
 
     <!-- E5 : contexte professionnel -->
@@ -407,13 +402,15 @@
     </div>
     <div class="dgrid">
       <button class="card dcard rv d1" data-doc="assets/pdf/dossier-e5.pdf" data-kind="pdf" data-title="Dossier E5 — Support et mise à disposition des services informatiques">
-        <span class="thumb"><img src="assets/thumbs/dossier-e5.jpg" alt="Aperçu du dossier E5"></span>
+        <span class="spec"><span class="sref">E5·01</span><span class="scat">dossier · 26 p.</span></span>
+        <span class="thumb"><img src="assets/thumbs/dossier-e5.jpg" alt="Aperçu du dossier E5"><span class="tno">N°. 01</span></span>
         <h4>Dossier E5</h4>
         <p>Le dossier d'épreuve complet : gestion patrimoniale, tickets INC / WO jusqu'au N2, soutien de proximité chez Orange.</p>
         <span class="st">dossier — épreuve e5 · 26 pages</span>
       </button>
       <div class="card dcard muted rv d2">
-        <span class="thumb"><span class="ph">🔒</span></span>
+        <span class="spec"><span class="sref">E5·02</span><span class="scat">interne · confidentiel</span></span>
+        <span class="thumb"><span class="ph">🔒<span class="tno">N°. 02</span></span></span>
         <h4>Procédures Orange</h4>
         <p>Les procédures rédigées chez Orange restent internes au groupe — elles ne sont pas publiables ici.</p>
         <span class="st">confidentialité — interne</span>
@@ -428,79 +425,92 @@
     </div>
     <div class="dgrid">
       <button class="card dcard rv d1" data-doc="assets/pdf/dossier-e6.pdf" data-kind="pdf" data-title="Dossier E6 — Administration des systèmes et des réseaux">
-        <span class="thumb"><img src="assets/thumbs/dossier-e6.jpg" alt="Aperçu du dossier E6"></span>
+        <span class="spec"><span class="sref">E6·01</span><span class="scat">dossier · 32 p.</span></span>
+        <span class="thumb"><img src="assets/thumbs/dossier-e6.jpg" alt="Aperçu du dossier E6"><span class="tno">N°. 03</span></span>
         <h4>Dossier E6</h4>
         <p>Le dossier d'épreuve complet de la maquette ImmoSud : conception, déploiement, administration.</p>
         <span class="st">dossier — épreuve e6 · 32 pages</span>
       </button>
       <button class="card dcard rv d1" data-doc="assets/cartographie-s4p1.png" data-kind="img" data-title="Cartographie réseau — maquette ImmoSud (S4P1)">
-        <span class="thumb"><img src="assets/cartographie-s4p1.png" alt="Cartographie réseau de la maquette ImmoSud"></span>
+        <span class="spec"><span class="sref">E6·02</span><span class="scat">schéma · 1 p.</span></span>
+        <span class="thumb"><img src="assets/cartographie-s4p1.png" alt="Cartographie réseau de la maquette ImmoSud"><span class="tno">N°. 04</span></span>
         <h4>Cartographie réseau</h4>
         <p>Schéma logique et physique : pfSense + Snort, VLANs, DMZ, Proxmox.</p>
         <span class="st">schéma — immosud s4p1</span>
       </button>
       <button class="card dcard rv d1" data-doc="assets/pdf/tp-gpo-immosud.pdf" data-kind="pdf" data-title="TP ImmoSud — services, utilisateurs et stratégies de groupe">
-        <span class="thumb"><img src="assets/thumbs/tp-gpo-immosud.jpg" alt="Aperçu du TP GPO ImmoSud"></span>
+        <span class="spec"><span class="sref">E6·03</span><span class="scat">tp · ad / gpo · 73 p.</span></span>
+        <span class="thumb"><img src="assets/thumbs/tp-gpo-immosud.jpg" alt="Aperçu du TP GPO ImmoSud"><span class="tno">N°. 05</span></span>
         <h4>TP GPO — ImmoSud</h4>
         <p>Services, utilisateurs et stratégies de groupe sur le domaine ImmoSud.</p>
         <span class="st">tp — ad / gpo</span>
       </button>
       <button class="card dcard rv d2" data-doc="assets/pdf/tp-cyberpeak.pdf" data-kind="pdf" data-title="TP CyberPeak Solutions — compte rendu de travaux pratiques">
-        <span class="thumb"><img src="assets/thumbs/tp-cyberpeak.jpg" alt="Aperçu du TP CyberPeak"></span>
+        <span class="spec"><span class="sref">E6·04</span><span class="scat">tp · support / admin · 89 p.</span></span>
+        <span class="thumb"><img src="assets/thumbs/tp-cyberpeak.jpg" alt="Aperçu du TP CyberPeak"><span class="tno">N°. 06</span></span>
         <h4>TP CyberPeak</h4>
         <p>Compte rendu complet : activités types 1 &amp; 2, missions 1 à 9.</p>
         <span class="st">tp — support &amp; administration</span>
       </button>
       <button class="card dcard rv d2" data-doc="assets/pdf/vm-ad1.pdf" data-kind="pdf" data-title="Procédure VM AD1 — contrôleur de domaine principal">
-        <span class="thumb"><img src="assets/thumbs/vm-ad1.jpg" alt="Aperçu de la procédure VM AD1"></span>
+        <span class="spec"><span class="sref">E6·05</span><span class="scat">windows server · 24 p.</span></span>
+        <span class="thumb"><img src="assets/thumbs/vm-ad1.jpg" alt="Aperçu de la procédure VM AD1"><span class="tno">N°. 07</span></span>
         <h4>Contrôleur AD1</h4>
         <p>Forêt Active Directory, DNS et DHCP sous Windows Server.</p>
         <span class="st">procédure — windows server</span>
       </button>
       <button class="card dcard rv d3" data-doc="assets/pdf/vm-ad2.pdf" data-kind="pdf" data-title="Procédure VM AD2 — second contrôleur de domaine">
-        <span class="thumb"><img src="assets/thumbs/vm-ad2.jpg" alt="Aperçu de la procédure VM AD2"></span>
+        <span class="spec"><span class="sref">E6·06</span><span class="scat">windows server · 10 p.</span></span>
+        <span class="thumb"><img src="assets/thumbs/vm-ad2.jpg" alt="Aperçu de la procédure VM AD2"><span class="tno">N°. 08</span></span>
         <h4>Contrôleur AD2</h4>
         <p>Jonction d'une VM au domaine pour la haute disponibilité.</p>
         <span class="st">procédure — windows server</span>
       </button>
       <button class="card dcard rv d3" data-doc="assets/pdf/exchange-2019.pdf" data-kind="pdf" data-title="Procédure — installation d'Exchange Server 2019">
-        <span class="thumb"><img src="assets/thumbs/exchange-2019.jpg" alt="Aperçu de la procédure Exchange 2019"></span>
+        <span class="spec"><span class="sref">E6·07</span><span class="scat">messagerie · 6 p.</span></span>
+        <span class="thumb"><img src="assets/thumbs/exchange-2019.jpg" alt="Aperçu de la procédure Exchange 2019"><span class="tno">N°. 09</span></span>
         <h4>Serveur Exchange</h4>
         <p>Installation de la messagerie Microsoft Exchange 2019.</p>
         <span class="st">procédure — messagerie</span>
       </button>
       <button class="card dcard rv d1" data-doc="assets/pdf/vm-glpi.pdf" data-kind="pdf" data-title="Procédure VM GLPI — gestion de parc et helpdesk">
-        <span class="thumb"><img src="assets/thumbs/vm-glpi.jpg" alt="Aperçu de la procédure VM GLPI"></span>
+        <span class="spec"><span class="sref">E6·08</span><span class="scat">itsm · 17 p.</span></span>
+        <span class="thumb"><img src="assets/thumbs/vm-glpi.jpg" alt="Aperçu de la procédure VM GLPI"><span class="tno">N°. 10</span></span>
         <h4>Gestion de parc GLPI</h4>
         <p>GLPI 10 sous Ubuntu, liaison LDAP à l'annuaire.</p>
         <span class="st">procédure — itsm</span>
       </button>
       <button class="card dcard rv d2" data-doc="assets/pdf/vm-zabbix.pdf" data-kind="pdf" data-title="Procédure VM Zabbix — supervision de l'infrastructure">
-        <span class="thumb"><img src="assets/thumbs/vm-zabbix.jpg" alt="Aperçu de la procédure VM Zabbix"></span>
+        <span class="spec"><span class="sref">E6·09</span><span class="scat">supervision · 17 p.</span></span>
+        <span class="thumb"><img src="assets/thumbs/vm-zabbix.jpg" alt="Aperçu de la procédure VM Zabbix"><span class="tno">N°. 11</span></span>
         <h4>Supervision Zabbix</h4>
         <p>Zabbix 7.4 sous Debian 13 : hôtes, agents et alertes.</p>
         <span class="st">procédure — supervision</span>
       </button>
       <button class="card dcard rv d2" data-doc="assets/pdf/vm-xivo.pdf" data-kind="pdf" data-title="Procédure VM XIVO — téléphonie IP">
-        <span class="thumb"><img src="assets/thumbs/vm-xivo.jpg" alt="Aperçu de la procédure VM XIVO"></span>
+        <span class="spec"><span class="sref">E6·10</span><span class="scat">voip · 26 p.</span></span>
+        <span class="thumb"><img src="assets/thumbs/vm-xivo.jpg" alt="Aperçu de la procédure VM XIVO"><span class="tno">N°. 12</span></span>
         <h4>Téléphonie XIVO</h4>
         <p>Installation du serveur de téléphonie IP sur l'infrastructure.</p>
         <span class="st">procédure — voip</span>
       </button>
       <button class="card dcard rv d3" data-doc="assets/pdf/vm-fog.pdf" data-kind="pdf" data-title="Procédure VM FOG — déploiement d'images">
-        <span class="thumb"><img src="assets/thumbs/vm-fog.jpg" alt="Aperçu de la procédure VM FOG"></span>
+        <span class="spec"><span class="sref">E6·11</span><span class="scat">masterisation · 5 p.</span></span>
+        <span class="thumb"><img src="assets/thumbs/vm-fog.jpg" alt="Aperçu de la procédure VM FOG"><span class="tno">N°. 13</span></span>
         <h4>Masterisation FOG</h4>
         <p>Serveur FOG : capture et déploiement d'images postes.</p>
         <span class="st">procédure — masterisation</span>
       </button>
       <button class="card dcard rv d3" data-doc="assets/pdf/vm-unify.pdf" data-kind="pdf" data-title="Procédure VM UniFi — contrôleur Wifi">
-        <span class="thumb"><img src="assets/thumbs/vm-unify.jpg" alt="Aperçu de la procédure VM UniFi"></span>
+        <span class="spec"><span class="sref">E6·12</span><span class="scat">wifi · 5 p.</span></span>
+        <span class="thumb"><img src="assets/thumbs/vm-unify.jpg" alt="Aperçu de la procédure VM UniFi"><span class="tno">N°. 14</span></span>
         <h4>Contrôleur UniFi</h4>
         <p>Contrôleur Wifi UniFi : adoption des bornes et SSID invité.</p>
         <span class="st">procédure — wifi</span>
       </button>
       <button class="card dcard rv d4" data-doc="assets/pdf/vm-artica.pdf" data-kind="pdf" data-title="Procédure VM ARTICA — proxy et filtrage">
-        <span class="thumb"><img src="assets/thumbs/vm-artica.jpg" alt="Aperçu de la procédure VM ARTICA"></span>
+        <span class="spec"><span class="sref">E6·13</span><span class="scat">proxy / filtrage · 16 p.</span></span>
+        <span class="thumb"><img src="assets/thumbs/vm-artica.jpg" alt="Aperçu de la procédure VM ARTICA"><span class="tno">N°. 15</span></span>
         <h4>Proxy ARTICA</h4>
         <p>Proxy et filtrage web des flux sortants de la maquette.</p>
         <span class="st">procédure — proxy / filtrage</span>
@@ -513,7 +523,7 @@
 <!-- ================= 07 CONTACT ================= -->
 <section id="contact">
   <div class="wrap">
-    <div class="shead rv"><span class="snum">07</span><h2 class="stitle">Contact</h2></div>
+    <div class="shead rv"><span class="snum">A/07</span><h2 class="stitle">Contact</h2></div>
     <p class="ssub rv">Disponible pour échanger sur mes projets et mes dossiers d'examen.</p>
     <a class="contact-big rv d1" id="mailtoLink" href="mailto:antoinesolermores@gmail.com">antoinesolermores<wbr>@gmail.com</a>
     <div class="rv d2">
@@ -557,6 +567,20 @@
   </div>
 </div>
 
+<!-- ================= DÉTAIL D'UNE VEILLE ================= -->
+<div class="docmodal vmod" id="veilleModal" hidden>
+  <div class="dm-back" data-vclose></div>
+  <div class="dm-box vm-box" role="dialog" aria-modal="true" aria-labelledby="vmTitle">
+    <div class="dm-head">
+      <p class="dm-title" id="vmTitle"></p>
+      <div class="dm-actions">
+        <button class="dm-x" data-vclose aria-label="fermer la veille">✕</button>
+      </div>
+    </div>
+    <div class="vm-body" id="vmBody"></div>
+  </div>
+</div>
+
 <!-- ================= ZOOM PAGE ================= -->
 <div id="pageZoom" hidden>
   <img id="pzImg" alt="page agrandie">
@@ -564,6 +588,6 @@
   <p class="pz-hint">cliquer n'importe où pour fermer · molette pour défiler</p>
 </div>
 
-<script src="main.js"></script>
+<script src="main.js?v=46"></script>
 </body>
 </html>
