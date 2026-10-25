@@ -522,21 +522,31 @@
     else hSect.innerHTML = "<b>A/00</b> · accueil";
   };
   if (navLinks.length && secs.length) {
-    const spy = new IntersectionObserver((es) => {
-      es.forEach((e) => {
-        if (!e.isIntersecting) return;
-        navLinks.forEach((a) =>
-          a.classList.toggle("on", a.getAttribute("href") === "#" + e.target.id)
-        );
-        setSect(e.target.id);
-      });
-    }, { rootMargin: "-30% 0px -55% 0px" });
-    secs.forEach((s) => spy.observe(s));
-  }
-  if (hSect) {
+    /* position de lecture : la section active est la dernière dont le haut
+       est passé au-dessus de la ligne de lecture (juste sous l'en-tête) */
+    let current = undefined;
+    const update = () => {
+      const y = scrollY + 160;
+      let id = null;
+      secs.forEach((s) => { if (s.offsetTop <= y) id = s.id; });
+      /* tout en bas de page, la dernière section gagne toujours */
+      if (innerHeight + scrollY >= document.documentElement.scrollHeight - 4)
+        id = secs[secs.length - 1].id;
+      if (id === current) return;
+      current = id;
+      navLinks.forEach((a) =>
+        a.classList.toggle("on", a.getAttribute("href") === "#" + id)
+      );
+      setSect(id);
+    };
+    let tick = false;
     addEventListener("scroll", () => {
-      if (scrollY < innerHeight * 0.45) setSect(null);
+      if (tick) return;
+      tick = true;
+      requestAnimationFrame(() => { update(); tick = false; });
     }, { passive: true });
+    addEventListener("resize", update);
+    update();
   }
 
   /* ---------- flux RSS en direct (CERT-FR) ---------- */
