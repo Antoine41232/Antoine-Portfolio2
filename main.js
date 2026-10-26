@@ -298,7 +298,7 @@
 
     const nextFrame = () => new Promise((resolve) => requestAnimationFrame(resolve));
 
-    /* La vraie vignette rejoint la page demandée : aucune image de substitution. */
+    /* La vraie vignette rejoint la page demandée : le mouvement n'attend pas le HD. */
     const morphIntoReader = async (building, origin) => {
       const clone = document.createElement("img");
       clone.className = "dm-morph";
@@ -320,37 +320,63 @@
       }
       const target = result.image;
       let finished = false;
+      let moved = false;
+      let ready = false;
       const finish = () => {
         if (finished) return;
         finished = true;
         if (target.isConnected) target.classList.remove("dm-morph-target");
         clone.style.opacity = "0";
-        setTimeout(() => clone.remove(), 170);
+        setTimeout(() => clone.remove(), 150);
+      };
+      const maybeFinish = () => { if (moved && ready) finish(); };
+      const markMoved = () => { moved = true; maybeFinish(); };
+      const markReady = () => {
+        if (ready || finished) return;
+        ready = true;
+        maybeFinish();
+      };
+      const onReady = () => {
+        if (target.decode) target.decode().catch(() => {}).then(markReady);
+        else markReady();
       };
       try {
-        if (!target.complete) {
-          await new Promise((resolve) => {
-            target.addEventListener("load", resolve, { once: true });
-            target.addEventListener("error", resolve, { once: true });
-          });
-        }
-        if (!target.naturalWidth) { finish(); return; }
-        if (target.decode) await target.decode().catch(() => {});
+        /* Deux frames suffisent pour poser la modale et mesurer son cadre. */
         await nextFrame();
         await nextFrame();
         if (result.token !== loadToken || modal.hidden || !target.isConnected) { finish(); return; }
-        const end = target.getBoundingClientRect();
-        if (!end.width || !end.height) { finish(); return; }
-        clone.getBoundingClientRect();
+        const frame = target.parentElement.getBoundingClientRect();
+        const ratio = origin.ratio || (target.naturalWidth / target.naturalHeight);
+        if (!frame.width || !frame.height || !ratio) { finish(); return; }
+        const width = Math.min(frame.width, frame.height * ratio);
+        const height = width / ratio;
+        const end = {
+          left: frame.left + (frame.width - width) / 2,
+          top: frame.top + (frame.height - height) / 2,
+          width, height
+        };
         clone.style.top = end.top + "px";
         clone.style.left = end.left + "px";
         clone.style.width = end.width + "px";
         clone.style.height = end.height + "px";
         clone.style.objectFit = "contain";
+        clone.style.objectPosition = "center";
+        clone.style.transform = `translate(${origin.rect.left - end.left}px,${origin.rect.top - end.top}px) scale(${origin.rect.width / end.width},${origin.rect.height / end.height})`;
+
+        if (target.complete) onReady();
+        else {
+          target.addEventListener("load", onReady, { once: true });
+          target.addEventListener("error", markReady, { once: true });
+        }
         clone.addEventListener("transitionend", (e) => {
-          if (e.propertyName === "width") finish();
+          if (e.propertyName === "transform") markMoved();
         });
-        setTimeout(finish, 650);
+        clone.getBoundingClientRect();
+        await nextFrame();
+        if (result.token !== loadToken || modal.hidden || !target.isConnected) { finish(); return; }
+        clone.style.transform = "translate(0,0) scale(1,1)";
+        setTimeout(markMoved, 360);
+        setTimeout(finish, 5000);
       } catch { finish(); }
     };
 
@@ -365,6 +391,7 @@
           origin = {
             src: originImg.currentSrc || originImg.src,
             rect: { top: rect.top, left: rect.left, width: rect.width, height: rect.height },
+            ratio: originImg.naturalWidth > 0 && originImg.naturalHeight > 0 ? originImg.naturalWidth / originImg.naturalHeight : rect.width / rect.height,
             objectFit: style.objectFit,
             objectPosition: style.objectPosition
           };
@@ -454,20 +481,6 @@
         if (!document.fullscreenElement) modal.classList.remove("dm-full");
       });
     }
-
-    /* précharge la 1re page au survol d'une carte — l'aperçu s'ouvre instantanément */
-    const preloaded = new Set();
-    document.querySelectorAll('[data-doc$=".pdf"]').forEach((el) => {
-      el.addEventListener("pointerenter", () => {
-        const slug = el.getAttribute("data-doc").split("/").pop().replace(/\.pdf$/i, "");
-        if (preloaded.has(slug)) return;
-        preloaded.add(slug);
-        for (const i of [1, 2]) {
-          const im = new Image();
-          im.src = `assets/pages/${slug}-p${i}.jpg`;
-        }
-      }, { once: true });
-    });
 
     /* zoom plein écran sur la page courante */
     const pz = document.getElementById("pageZoom");
@@ -568,7 +581,7 @@
           </div>
           <p class="k2">comment je l'applique</p>
           <p style="color:var(--ink-2); margin-bottom:4px">Chez Orange — entité essentielle au sens du texte — je vois la directive à l'œuvre : MFA généralisé, durcissement des accès, traçabilité des interventions. En intervention et comme ambassadeur digital, j'explique aux utilisateurs le <i>pourquoi</i> des consignes : verrouillage de session, mots de passe, vigilance sur les pièces jointes.</p>
-          <p class="q">« Cette directive impacte directement mon futur métier : les techniciens doivent protéger les infrastructures informatiques et les données. »</p>
+          <p class="q">« Cette directive concerne directement mon futur métier : les techniciens doivent protéger les infrastructures informatiques et les données. »</p>
           <p class="k2">sources suivies</p>
           <div class="vm-src">
             <a href="https://www.cyber.gouv.fr/la-directive-nis-2" target="_blank" rel="noopener">ANSSI — la directive NIS2 ↗</a>
@@ -584,13 +597,13 @@
             <span>créée · septembre 2024</span>
             <span>statut · active — revue chaque semaine</span>
           </div>
-          <p class="vm-why"><b>Pourquoi cette veille existe.</b> Le vol d'identifiants reste la première porte d'entrée des cyberattaques. Le MFA — mot de passe + preuve temporaire — rend le mot de passe seul inutile : même volé, il ne suffit plus. C'est le point exact où ma veille juridique rejoint ma pratique technique, puisque NIS2 le rend obligatoire. J'ai ouvert cette veille en entrant en BTS SIO.</p>
+          <p class="vm-why"><b>Pourquoi cette veille existe.</b> Le vol d'identifiants reste une porte d'entrée majeure des cyberattaques. Le MFA — au moins deux preuves de nature différente — rend le mot de passe seul insuffisant : même volé, il ne suffit plus. C'est le point exact où ma veille juridique rejoint ma pratique technique, puisque NIS2 renforce les exigences en matière d'authentification. J'ai ouvert cette veille en entrant en BTS SIO.</p>
           <div class="vm-cols">
             <div>
               <p class="k2">l'essentiel — pourquoi ça se développe</p>
               <ul>
                 <li>Augmentation constante des cyberattaques par identifiants dérobés</li>
-                <li>Obligation légale portée par la directive NIS2</li>
+                <li>Exigences de sécurité renforcées par la directive NIS2</li>
                 <li>Protection des comptes professionnels et des données</li>
                 <li>Intégration au modèle <b>Zero Trust</b> : vérifier chaque utilisateur et chaque accès, même à l'intérieur du réseau</li>
               </ul>
@@ -622,16 +635,16 @@
             <span>période · sept. 2025 — aujourd'hui</span>
             <span>périmètre · ≈ 1 200 utilisateurs</span>
           </div>
-          <p class="vm-why"><b>Le contexte.</b> Orange, grand groupe français des télécommunications et du numérique : internet, informatique, réseaux, téléphonie, cybersécurité. J'y effectue mon alternance au sein du service informatique, sous la tutelle de mon maître d'apprentissage, <b>M. Franck Pouilly</b> — au poste de technicien soutien de proximité, au cœur des infrastructures.</p>
+          <p class="vm-why"><b>Le contexte.</b> Orange, grand groupe français des télécommunications et du numérique : internet, informatique, réseaux, téléphonie, cybersécurité. J'y effectue mon alternance au sein du service informatique, sous la tutelle de mon maître d'apprentissage, <b>M. Franck Pouilly</b> — au poste de technicien soutien de proximité.</p>
           <div class="vm-cols">
             <div>
               <p class="k2">ce que j'y fais — au quotidien</p>
               <ul>
-                <li>Gestion et déploiement du parc informatique</li>
-                <li>Traitement des tickets INC / WO jusqu'au niveau 2</li>
-                <li>Assistance et montée en compétence des utilisateurs</li>
-                <li>Consignation méthodique de chaque intervention</li>
-                <li>Ambassadeur digital : sensibilisation à la sécurité, inclusion numérique</li>
+                <li>Support N1–N2 : diagnostic matériel et logiciel, clés PKI et migration des données</li>
+                <li>Déploiement de postes Windows 11 et gestion du stock informatique</li>
+                <li>Tickets INC / WO jusqu'au niveau 2, avec chaque intervention documentée</li>
+                <li>Brassage réseau, positions Flex et remplacement de terminaux iSMP</li>
+                <li>Ambassadeur digital : sensibilisation à la sécurité et inclusion numérique</li>
               </ul>
             </div>
             <div>
@@ -661,7 +674,7 @@
             <span>option · SISR — solutions d'infrastructure, systèmes et réseaux</span>
             <span>période · 2025 — 2027 · en alternance</span>
           </div>
-          <p class="vm-why"><b>C'est quoi.</b> Le BTS Services informatiques aux organisations forme des techniciens capables de gérer l'infrastructure informatique d'une organisation. L'option <b>SISR</b>, c'est le côté bâtiment : serveurs, réseaux, virtualisation, sécurité, supervision — là où l'option SLAM fait du développement.</p>
+          <p class="vm-why"><b>C'est quoi.</b> Le BTS Services informatiques aux organisations forme des techniciens capables de gérer l'infrastructure informatique d'une organisation. L'option <b>SISR</b>, c'est la partie infrastructure : serveurs, réseaux, virtualisation, sécurité, supervision — là où l'option SLAM fait du développement.</p>
           <div class="vm-cols">
             <div>
               <p class="k2">les blocs du métier</p>
@@ -840,7 +853,7 @@
         const heading = grid.previousElementSibling;
         if (heading && heading.classList.contains("dsub")) heading.hidden = !hasVisible;
       });
-      count.textContent = visible + (visible > 1 ? " documents" : " document");
+      count.textContent = visible + (visible > 1 ? " fiches" : " fiche");
       empty.hidden = visible !== 0;
     };
     filterButtons.forEach((button) => button.addEventListener("click", () => {
