@@ -37,7 +37,11 @@ html[data-theme="dark"]{
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{
+  scroll-behavior:smooth;
+  background:var(--bg);
+  scrollbar-color:var(--line) var(--bg);
+}
 body{
   font-family:var(--sans);
   background:var(--bg); color:var(--ink);
