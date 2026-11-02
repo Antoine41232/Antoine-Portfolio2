@@ -41,7 +41,24 @@ html{
   scroll-behavior:smooth;
   background:var(--bg);
   scrollbar-color:var(--line) var(--bg);
+  scrollbar-width:thin;
 }
+html,body{
+  width:100%;
+  max-width:none!important;
+  margin:0!important;
+  overflow-x:hidden;
+}
+/* Edge/Windows peut imposer une barre native très large : la barre racine
+   reste fine et reprend le fond du thème, sans modifier les lecteurs. */
+html::-webkit-scrollbar{width:12px; background:var(--bg)}
+html::-webkit-scrollbar-track{background:var(--bg)}
+html::-webkit-scrollbar-thumb{
+  background:var(--line);
+  border:3px solid var(--bg);
+  border-radius:20px;
+}
+html::-webkit-scrollbar-thumb:hover{background:var(--gold-text)}
 body{
   font-family:var(--sans);
   background:var(--bg); color:var(--ink);
