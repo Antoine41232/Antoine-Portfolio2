@@ -13,10 +13,10 @@
 }
 html[data-theme="light"]{
   --bg:#F7F4EE; --bg-soft:#EFEAE0; --card:#FFFFFF;
-  --ink:#191B21; --ink-2:#585B66; --ink-3:#6E6960;
+  --ink:#191B21; --ink-2:#474B55; --ink-3:#5A5751;
   --line:rgba(25,27,33,.11); --line-soft:rgba(25,27,33,.06);
   --accent:#173A5E; --accent-ink:#F7F4EE;
-  --gold:#9A7B2D; --gold-text:#7C611D; --gold-soft:rgba(154,123,45,.12);
+  --gold:#9A7B2D; --gold-text:#715818; --gold-soft:rgba(154,123,45,.12);
   --accent-soft:rgba(23,58,94,.07);
   --glass:rgba(247,244,238,.82);
   --ok:#2E7D4F; --ok-soft:rgba(46,125,79,.12);
@@ -25,10 +25,10 @@ html[data-theme="light"]{
 }
 html[data-theme="dark"]{
   --bg:#0F1114; --bg-soft:#15181D; --card:#181C22;
-  --ink:#ECE8DD; --ink-2:#A6A496; --ink-3:#8D918C;
+  --ink:#ECE8DD; --ink-2:#C9C6BB; --ink-3:#B0B3AD;
   --line:rgba(236,232,221,.1); --line-soft:rgba(236,232,221,.05);
-  --accent:#C8A45C; --accent-ink:#0F1114;
-  --gold:#C8A45C; --gold-text:#C8A45C; --gold-soft:rgba(200,164,92,.13);
+  --accent:#D3B36C; --accent-ink:#0F1114;
+  --gold:#C8A45C; --gold-text:#D3B36C; --gold-soft:rgba(200,164,92,.13);
   --accent-soft:rgba(200,164,92,.08);
   --glass:rgba(15,17,20,.78);
   --ok:#7DBB96; --ok-soft:rgba(125,187,150,.14);
@@ -478,7 +478,7 @@ button.tag:disabled::after{display:none}
 }
 .ds-tag.e6{border-color:var(--accent); color:var(--accent); background:var(--accent-soft)}
 .dgrid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
-.dcard{padding:22px; text-align:left; font-family:inherit; width:100%}
+.dcard{padding:22px; text-align:left; font-family:inherit; width:100%; min-width:0}
 button.dcard{color:var(--ink)}
 .dcard.muted{opacity:.72}
 .dcard.muted:hover{transform:none; border-color:var(--line); background:var(--card);
@@ -1115,6 +1115,53 @@ body.dm-open{overflow:hidden}
   .stat:first-child{padding-left:16px}
   .hbar .btn{display:none}
 }
+/* ---------- lisibilité renforcée ----------
+   Les paragraphes gagnent en corps sans modifier la structure éditoriale.
+   Les petits libellés décoratifs conservent volontairement leur échelle. */
+body{font-size:17px}
+nav a{font-size:11px}
+.btn{font-size:14px}
+.btn.sm{font-size:13px}
+.hero .sub{font-size:18px}
+.hero-meta{font-size:11px}
+.spec-rows > div{font-size:12px}
+.ssub{font-size:17px}
+.about-grid p{font-size:17px}
+.card p{font-size:16px}
+.missions li{font-size:15px}
+.stat span{font-size:12.5px}
+.pcard .ctx{font-size:14px}
+.tag{font-size:11.5px}
+.dsub p{font-size:15px}
+.dcard h4{font-size:17px}
+.dcard p{font-size:14.5px; color:var(--ink-2)}
+.dcard .st{font-size:11px}
+.dcard .spec{font-size:10.5px}
+.cinfo .l{font-size:12px}
+.cinfo .v{font-size:16px}
+footer{font-size:14px}
+.tl-item .w{font-size:14.5px}
+.cert .ct b{font-size:14px}
+.cert .ct i{font-size:12.5px}
+.vm-body li,.vm-chrono li{font-size:14.5px}
+.jbody p{font-size:14.5px}
+.phero .sub{font-size:17px}
+.proof-result-title{font-size:14px}
+.proof-preview-desc{font-size:14.5px}
+.archive-filters button{font-size:11px}
+.archive-count{font-size:11px}
+@media (max-width:940px){
+  .hero-meta{font-size:10.5px}
+}
+@media (max-width:760px){
+  .proof-preview-desc{font-size:14px}
+}
+@media (max-width:560px){
+  .archive-filters button{font-size:12px}
+  .archive-count{font-size:12px}
+  .proof-result-title{font-size:13.5px}
+}
+
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{transition-duration:.01ms !important; animation-duration:.01ms !important}
   .rv{opacity:1; transform:none; filter:none}
