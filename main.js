@@ -554,7 +554,7 @@
             <span>créée · octobre 2024</span>
             <span>statut · suivi régulier</span>
           </div>
-          <p class="vm-why"><b>Le point de départ</b>, j'ai ouvert cette veille avant la date limite de transposition de la directive (UE) 2022/2555 pour suivre les organisations concernées, les mesures attendues et le calendrier français, le secteur des télécommunications entre dans son champ et je peux ainsi rapprocher le texte de ce que j'observe en alternance.</p>
+          <p class="vm-why"><b>le point de départ</b>, j'ai ouvert cette veille avant la date limite de transposition de la directive (UE) 2022/2555, je suis les organisations concernées, les mesures attendues et le calendrier français, notamment pour les télécommunications</p>
           <div class="vm-cols">
             <div>
               <p class="k2">les obligations que je retiens</p>
@@ -573,15 +573,15 @@
             <div>
               <p class="k2">chronologie suivie</p>
               <ol class="vm-chrono">
-                <li><b>17 oct. 2024</b>date limite de transposition de la directive par les États membres.</li>
-                <li><b>12 mars 2025</b>adoption en première lecture du projet de loi « résilience des infrastructures critiques et renforcement de la cybersécurité » par le Sénat.</li>
-                <li><b>10 sept. 2025</b>adoption du texte par la commission spéciale de l'Assemblée nationale.</li>
-                <li><b>17 mars 2026</b>présentation du Référentiel Cyber France par l'ANSSI comme document de travail non obligatoire par défaut.</li>
+                <li><b>17 oct. 2024</b>date limite de transposition de la directive par les États membres</li>
+                <li><b>12 mars 2025</b>adoption en première lecture du projet de loi « résilience des infrastructures critiques et renforcement de la cybersécurité » par le Sénat</li>
+                <li><b>10 sept. 2025</b>adoption du texte par la commission spéciale de l'Assemblée nationale</li>
+                <li><b>17 mars 2026</b>présentation du Référentiel Cyber France par l'ANSSI comme document de travail non obligatoire par défaut</li>
               </ol>
             </div>
           </div>
           <p class="k2">le lien avec mes interventions</p>
-          <p style="color:var(--ink-2); margin-bottom:4px">Dans mon dossier E5, je relie cette veille au remplacement des clés PKI et à la confidentialité des données pendant les migrations de postes, comme ambassadeur digital, je rappelle aussi le verrouillage des sessions, le choix des mots de passe et la vigilance face à l'hameçonnage.</p>
+          <p style="color:var(--ink-2); margin-bottom:4px">dans mon dossier E5, je relie cette veille au remplacement des clés PKI et à la confidentialité des données pendant les migrations de postes, comme ambassadeur digital, je rappelle aussi le verrouillage des sessions, le choix des mots de passe et la vigilance face à l'hameçonnage</p>
           <p class="k2">sources suivies</p>
           <div class="vm-src">
             <a href="https://www.cyber.gouv.fr/reglementation/cybersecurite-systemes-dinformation/directives-nis-nis2-et-dispositif-saiv/directive-nis-2/" target="_blank" rel="noopener">ANSSI — la directive NIS2 ↗</a>
@@ -597,7 +597,7 @@
             <span>créée · septembre 2024</span>
             <span>statut · suivi régulier</span>
           </div>
-          <p class="vm-why"><b>Le problème étudié</b>, je suis l'authentification multifacteur pour comprendre comment elle limite l'usage d'un mot de passe volé, le MFA combine au moins deux facteurs de familles différentes et la clé PKI que je prends en charge chez Orange me donne un cas concret à relier au Zero Trust.</p>
+          <p class="vm-why"><b>le problème étudié</b>, je suis l'authentification multifacteur pour comprendre comment elle limite l'usage d'un mot de passe volé, le MFA combine au moins deux familles de facteurs, la clé PKI utilisée chez Orange me donne un cas concret à relier au Zero Trust</p>
           <div class="vm-cols">
             <div>
               <p class="k2">les trois familles de facteurs</p>
@@ -611,19 +611,19 @@
             <div>
               <p class="k2">repères techniques</p>
               <ol class="vm-chrono">
-                <li><b>clé PKI</b>la clé USB contient le certificat de l'utilisateur et correspond au facteur de possession.</li>
-                <li><b>Zero Trust</b>un accès n'est pas considéré comme fiable uniquement parce qu'il vient du réseau interne.</li>
-                <li><b>passkeys</b>ces identifiants sans mot de passe utilisent le déverrouillage de l'appareil et sont présentés dans mon dossier E5.</li>
+                <li><b>clé PKI</b>la clé USB contient le certificat de l'utilisateur et correspond au facteur de possession</li>
+                <li><b>Zero Trust</b>un accès n'est pas considéré comme fiable uniquement parce qu'il vient du réseau interne</li>
+                <li><b>passkeys</b>ces identifiants sans mot de passe utilisent le déverrouillage de l'appareil et sont présentés dans mon dossier E5</li>
               </ol>
             </div>
           </div>
           <p class="k2">le contrôle que je réalise</p>
-          <p style="color:var(--ink-2); margin-bottom:4px">Chez Orange, je remplace ou débloque les clés PKI avec l'application « Ma Clé PKI », après un changement de poste, je fais ouvrir la session avec la clé puis je vérifie avec le salarié que son accès fonctionne avant de clôturer l'intervention.</p>
+          <p style="color:var(--ink-2); margin-bottom:4px">chez Orange, je remplace ou débloque les clés PKI avec « Ma Clé PKI », après un changement de poste, je fais ouvrir la session avec la clé, je vérifie ensuite l'accès avec le salarié avant de clôturer l'intervention</p>
           <p class="k2">sources suivies</p>
           <div class="vm-src">
             <a href="https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32022L2555" target="_blank" rel="noopener">EUR-Lex — directive (UE) 2022/2555 ↗</a>
             <a href="https://www.cert.ssi.gouv.fr" target="_blank" rel="noopener">CERT-FR ↗</a>
-            <a href="assets/pdf/dossier-e5.pdf#page=24" target="_blank" rel="noopener">Dossier E5 — veille technologique, page 24 ↗</a>
+            <a href="assets/pdf/dossier-e5.pdf#page=19" target="_blank" rel="noopener">Dossier E5 — veille technologique, page 19 ↗</a>
           </div>`
       },
       orange: {
@@ -634,7 +634,7 @@
             <span>période · sept. 2025 — aujourd'hui</span>
             <span>périmètre · ≈ 1 200 salariés</span>
           </div>
-          <p class="vm-why"><b>Mon terrain d'intervention</b>, j'effectue mon alternance dans le service informatique d'Orange à Marseille avec <b>M. Franck Pouilly</b> comme maître d'alternance, je prends en charge les utilisateurs à l'Espace Service, sur le site et en boutiques comme technicien soutien de proximité.</p>
+          <p class="vm-why"><b>mon terrain d'intervention</b>, je travaille dans le service informatique d'Orange à Marseille avec <b>M. Franck Pouilly</b> comme maître d'alternance, je prends en charge les utilisateurs à l'Espace Service, sur le site et en boutiques</p>
           <div class="vm-cols">
             <div>
               <p class="k2">les actions que je mène</p>
@@ -661,7 +661,7 @@
             </div>
           </div>
           <p class="k2">du diagnostic à la clôture</p>
-          <p style="color:var(--ink-2); margin-bottom:4px">Pour un remplacement de poste, j'installe Windows 11 avec la surcouche Eburo, je transfère les fichiers avec Transfert Tool puis je fais vérifier la session, les données, OneDrive, la messagerie et Teams avant de renseigner le résultat dans le ticket INC ou WO.</p>
+          <p style="color:var(--ink-2); margin-bottom:4px">pour un remplacement de poste, j'installe Windows 11 avec la surcouche Eburo et je transfère les fichiers avec Transfert Tool, je fais ensuite vérifier la session, les données, OneDrive, la messagerie et Teams, je renseigne enfin le résultat dans le ticket INC ou WO</p>
           <div class="vm-src">
             <a href="#projets" data-goto="#projets">voir les projets professionnels E5 →</a>
           </div>`
@@ -674,7 +674,7 @@
             <span>option · SISR — solutions d'infrastructure, systèmes et réseaux</span>
             <span>période · 2025 — 2027 · en alternance</span>
           </div>
-          <p class="vm-why"><b>Ce que je prépare</b>, je suis l'option <b>SISR</b> du BTS Services informatiques aux organisations pour administrer les systèmes et les réseaux, j'alterne les apports de l'IFC, les maquettes techniques et le support réel chez Orange.</p>
+          <p class="vm-why"><b>ce que je prépare</b>, je suis l'option <b>SISR</b> du BTS Services informatiques aux organisations pour administrer les systèmes et les réseaux, j'alterne les cours de l'IFC, les travaux pratiques et le support réel chez Orange</p>
           <div class="vm-cols">
             <div>
               <p class="k2">les compétences que je travaille</p>
@@ -689,12 +689,12 @@
               <p class="k2">les épreuves documentées</p>
               <ul>
                 <li><b>E5</b> réunit les réalisations professionnelles effectuées chez Orange</li>
-                <li><b>E6</b> présente l'administration de la maquette ImmoSud et ses plans de tests</li>
+                <li><b>E6</b> présente l'administration du TP ImmoSud et ses plans de tests</li>
               </ul>
             </div>
           </div>
           <p class="k2">ce que je manipule en laboratoire</p>
-          <p style="color:var(--ink-2); margin-bottom:4px">Sur mes maquettes de l'IFC, je configure pfSense, Snort et les équipements Cisco, je déploie un contrôleur de domaine et un serveur membre, j'administre les stratégies de groupe, Exchange, Zabbix, Xivo, FOG, UniFi et Artica puis je joins les tests aux procédures, GLPI fait l'objet d'une procédure autonome.</p>
+          <p style="color:var(--ink-2); margin-bottom:4px">dans les TP de l'IFC, je configure le réseau avec pfSense, Snort et les équipements Cisco, je déploie aussi Active Directory, Exchange, Zabbix, Xivo, FOG, UniFi et Artica, les tests sont joints aux procédures et GLPI fait l'objet d'une procédure autonome</p>
           <div class="vm-src">
             <a href="#documentation" data-goto="#documentation">voir la documentation E6 →</a>
           </div>`
@@ -1477,7 +1477,7 @@
         snapshotDate = fmtDate(j.updated, true) || snapshotDate;
         if (!onlineReady) {
           render(j.items);
-          setStatus(`avis du CERT-FR enregistrés le ${snapshotDate}, en attendant leur actualisation, chaque entrée renvoie vers l'avis officiel.`);
+          setStatus(`avis du CERT-FR enregistrés le ${snapshotDate}, en attendant leur actualisation, chaque entrée renvoie vers l'avis officiel`);
         }
       })
       .catch(() => {});
@@ -1501,7 +1501,7 @@
         onlineReady = true;
         render(items);
         const time = new Intl.DateTimeFormat("fr-FR", { hour: "2-digit", minute: "2-digit" }).format(new Date());
-        setStatus(`derniers avis du CERT-FR actualisés à ${time}, chaque entrée renvoie vers l'avis officiel.`);
+        setStatus(`derniers avis du CERT-FR actualisés à ${time}, chaque entrée renvoie vers l'avis officiel`);
       })
       .catch(() => {})
       .finally(() => clearTimeout(timeout));
@@ -1509,10 +1509,10 @@
     Promise.allSettled([localTask, onlineTask]).then(() => {
       if (onlineReady) return;
       if (localReady) {
-        setStatus(`actualisation indisponible, les avis enregistrés le ${snapshotDate} restent affichés et chaque entrée renvoie vers l'avis officiel.`);
+        setStatus(`actualisation indisponible, les avis enregistrés le ${snapshotDate} restent affichés et chaque entrée renvoie vers l'avis officiel`);
       } else {
-        live.innerHTML = `<p class="note">chargement impossible, les avis restent accessibles sur le <a href="${HOME}" target="_blank" rel="noopener">site officiel du CERT-FR</a>.</p>`;
-        setStatus("les derniers avis n'ont pas pu être chargés, le site officiel du CERT-FR reste accessible.");
+        live.innerHTML = `<p class="note">chargement impossible, les avis restent accessibles sur le <a href="${HOME}" target="_blank" rel="noopener">site officiel du CERT-FR</a></p>`;
+        setStatus("les derniers avis n'ont pas pu être chargés, le site officiel du CERT-FR reste accessible");
       }
     });
   }
