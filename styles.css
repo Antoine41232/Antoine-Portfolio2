@@ -855,7 +855,7 @@ body.proof-open{overflow:hidden}
 .dm-thumb:focus-visible{outline:2px solid var(--gold); outline-offset:1px; opacity:1}
 .dm-stage{
   min-width:0; min-height:0; overflow-y:auto; overflow-x:hidden; padding:0;
-  scroll-snap-type:y proximity; overscroll-behavior:contain;
+  scroll-snap-type:y proximity; overscroll-behavior:contain; overflow-anchor:none;
   -webkit-overflow-scrolling:touch; scrollbar-width:thin;
 }
 .dm-stage:focus-visible{outline:2px solid var(--gold); outline-offset:-3px}
@@ -1164,7 +1164,7 @@ footer{font-size:14px}
 
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{transition-duration:.01ms !important; animation-duration:.01ms !important}
-  .rv{opacity:1; transform:none; filter:none}
+  .js .rv,.js .hero .rv{opacity:1; transform:none; filter:none}
   .rv,.hl-in{transition-delay:0s !important}
   .hl-in{animation:none !important; transform:none !important}
   #loader{display:none !important}

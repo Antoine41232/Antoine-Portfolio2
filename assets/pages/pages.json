@@ -8,8 +8,8 @@
   "total": 26
  },
  "dossier-e6": {
-  "preview": 32,
-  "total": 32
+  "preview": 99,
+  "total": 99
  },
  "tp-cyberpeak": {
   "preview": 89,
@@ -20,43 +20,59 @@
   "total": 73
  },
  "vm-ad1": {
-  "preview": 24,
-  "total": 24
+  "preview": 30,
+  "total": 30
  },
  "vm-ad2": {
-  "preview": 10,
-  "total": 10
+  "preview": 11,
+  "total": 11
  },
  "vm-artica": {
-  "preview": 16,
-  "total": 16
+  "preview": 17,
+  "total": 17
  },
  "vm-fog": {
-  "preview": 5,
-  "total": 5
- },
- "vm-glpi": {
-  "preview": 17,
-  "total": 17
- },
- "vm-unify": {
-  "preview": 5,
-  "total": 5
- },
- "vm-xivo": {
-  "preview": 26,
-  "total": 26
- },
- "vm-zabbix": {
-  "preview": 17,
-  "total": 17
- },
- "exchange-2019": {
   "preview": 6,
   "total": 6
+ },
+ "vm-glpi": {
+  "preview": 18,
+  "total": 18
+ },
+ "vm-unify": {
+  "preview": 12,
+  "total": 12
+ },
+ "vm-xivo": {
+  "preview": 25,
+  "total": 25
+ },
+ "vm-zabbix": {
+  "preview": 20,
+  "total": 20
+ },
+ "exchange-2019": {
+  "preview": 7,
+  "total": 7
  },
  "tcs": {
   "preview": 1,
   "total": 1
+ },
+ "pfsense": {
+  "preview": 12,
+  "total": 12
+ },
+ "snort": {
+  "preview": 8,
+  "total": 8
+ },
+ "switch-cisco": {
+  "preview": 11,
+  "total": 11
+ },
+ "vm-proxmox": {
+  "preview": 7,
+  "total": 7
  }
 }

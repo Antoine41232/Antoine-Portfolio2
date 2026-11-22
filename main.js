@@ -211,11 +211,11 @@
       if (!reader.total) return;
       const page = Math.max(1, Math.min(reader.total, Number(requested) || 1));
       syncPage(page);
-      requestAnimationFrame(() => {
-        if (reader.page !== page) return;
-        mStage.scrollTop = (page - 1) * mStage.clientHeight;
-        syncPage(page);
-      });
+      const target = mStage.querySelector(`[data-page-sheet="${page}"]`);
+      if (target) {
+        mStage.scrollTop = target.offsetTop - mStage.offsetTop;
+      } else mStage.scrollTop = (page - 1) * mStage.clientHeight;
+      syncPage(page);
     };
 
     let stageTick = false;
@@ -547,84 +547,83 @@
   if (vmod) {
     const DETAILS = {
       nis2: {
-        title: "Directive NIS2 — la cybersécurité devient une obligation",
+        title: "Directive NIS2 — obligations de cybersécurité",
         body: `
           <div class="vm-meta">
             <span>type · veille juridique</span>
             <span>créée · octobre 2024</span>
-            <span>statut · active — revue chaque semaine</span>
+            <span>statut · suivi régulier</span>
           </div>
-          <p class="vm-why"><b>Pourquoi cette veille existe.</b> Le 17 octobre 2024, la France devait avoir transposé la directive (UE) 2022/2555 — elle a pris du retard, comme la majorité des États. Ce jour-là, le sujet est devenu concret : les télécoms passent au régime des « entités essentielles ». J'ai ouvert cette veille pour comprendre ce que NIS2 change dans le quotidien d'un service informatique, pas seulement dans les textes.</p>
+          <p class="vm-why"><b>Le point de départ</b>, j'ai ouvert cette veille avant la date limite de transposition de la directive (UE) 2022/2555 pour suivre les organisations concernées, les mesures attendues et le calendrier français, le secteur des télécommunications entre dans son champ et je peux ainsi rapprocher le texte de ce que j'observe en alternance.</p>
           <div class="vm-cols">
             <div>
-              <p class="k2">l'essentiel — obligations</p>
+              <p class="k2">les obligations que je retiens</p>
               <ul>
-                <li>Sécuriser les systèmes d'information et les chaînes de fournisseurs</li>
-                <li>Déployer l'authentification multifacteur (MFA)</li>
-                <li>Surveiller les réseaux et détecter les cyberattaques</li>
-                <li>Déclarer les incidents de sécurité aux autorités — l'ANSSI en France</li>
+                <li>gérer les risques de sécurité avec des mesures adaptées</li>
+                <li>protéger les systèmes d'information et les chaînes de fournisseurs</li>
+                <li>prévoir l'authentification multifacteur ou des solutions équivalentes selon les dispositions applicables</li>
+                <li>signaler les incidents importants dans les délais prévus</li>
               </ul>
-              <p class="k2" style="margin-top:18px">sanctions encourues</p>
+              <p class="k2" style="margin-top:18px">sanctions maximales prévues par la directive</p>
               <ul>
-                <li>Jusqu'à 10 M€ ou 2 % du CA mondial — entités essentielles (comme Orange)</li>
-                <li>Jusqu'à 7 M€ ou 1,4 % du CA mondial — entités importantes</li>
+                <li>jusqu'à 10 M€ ou 2 % du chiffre d'affaires mondial pour les entités essentielles</li>
+                <li>jusqu'à 7 M€ ou 1,4 % du chiffre d'affaires mondial pour les entités importantes</li>
               </ul>
             </div>
             <div>
-              <p class="k2">chronologie</p>
+              <p class="k2">chronologie suivie</p>
               <ol class="vm-chrono">
-                <li><b>17 oct. 2024</b>Date limite de transposition par les États membres — le périmètre des entités concernées s'élargit fortement, télécoms en tête.</li>
-                <li><b>12 mars 2025</b>Le Sénat adopte en première lecture le projet de loi « résilience des infrastructures critiques et renforcement de la cybersécurité ».</li>
-                <li><b>sept. 2025</b>Examen en commission spéciale à l'Assemblée nationale — la navette se poursuit, l'ANSSI se prépare au rôle d'autorité de contrôle.</li>
+                <li><b>17 oct. 2024</b>date limite de transposition de la directive par les États membres.</li>
+                <li><b>12 mars 2025</b>adoption en première lecture du projet de loi « résilience des infrastructures critiques et renforcement de la cybersécurité » par le Sénat.</li>
+                <li><b>10 sept. 2025</b>adoption du texte par la commission spéciale de l'Assemblée nationale.</li>
+                <li><b>17 mars 2026</b>présentation du Référentiel Cyber France par l'ANSSI comme document de travail non obligatoire par défaut.</li>
               </ol>
             </div>
           </div>
-          <p class="k2">comment je l'applique</p>
-          <p style="color:var(--ink-2); margin-bottom:4px">Chez Orange — entité essentielle au sens du texte — je vois la directive à l'œuvre : MFA généralisé, durcissement des accès, traçabilité des interventions. En intervention et comme ambassadeur digital, j'explique aux utilisateurs le <i>pourquoi</i> des consignes : verrouillage de session, mots de passe, vigilance sur les pièces jointes.</p>
-          <p class="q">« Cette directive concerne directement mon futur métier : les techniciens doivent protéger les infrastructures informatiques et les données. »</p>
+          <p class="k2">le lien avec mes interventions</p>
+          <p style="color:var(--ink-2); margin-bottom:4px">Dans mon dossier E5, je relie cette veille au remplacement des clés PKI et à la confidentialité des données pendant les migrations de postes, comme ambassadeur digital, je rappelle aussi le verrouillage des sessions, le choix des mots de passe et la vigilance face à l'hameçonnage.</p>
           <p class="k2">sources suivies</p>
           <div class="vm-src">
-            <a href="https://www.cyber.gouv.fr/la-directive-nis-2" target="_blank" rel="noopener">ANSSI — la directive NIS2 ↗</a>
+            <a href="https://www.cyber.gouv.fr/reglementation/cybersecurite-systemes-dinformation/directives-nis-nis2-et-dispositif-saiv/directive-nis-2/" target="_blank" rel="noopener">ANSSI — la directive NIS2 ↗</a>
             <a href="https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32022L2555" target="_blank" rel="noopener">EUR-Lex — directive (UE) 2022/2555 ↗</a>
-            <a href="https://www.cert.ssi.gouv.fr" target="_blank" rel="noopener">CERT-FR ↗</a>
+            <a href="https://www.assemblee-nationale.fr/dyn/17/dossiers/DLR5L17N50731" target="_blank" rel="noopener">Assemblée nationale — dossier législatif ↗</a>
           </div>`
       },
       mfa: {
-        title: "MFA & Zero Trust — le mot de passe ne suffit plus",
+        title: "MFA et Zero Trust — sécuriser les accès",
         body: `
           <div class="vm-meta">
             <span>type · veille technologique</span>
             <span>créée · septembre 2024</span>
-            <span>statut · active — revue chaque semaine</span>
+            <span>statut · suivi régulier</span>
           </div>
-          <p class="vm-why"><b>Pourquoi cette veille existe.</b> Le vol d'identifiants reste une porte d'entrée majeure des cyberattaques. Le MFA — au moins deux preuves de nature différente — rend le mot de passe seul insuffisant : même volé, il ne suffit plus. C'est le point exact où ma veille juridique rejoint ma pratique technique, puisque NIS2 renforce les exigences en matière d'authentification. J'ai ouvert cette veille en entrant en BTS SIO.</p>
+          <p class="vm-why"><b>Le problème étudié</b>, je suis l'authentification multifacteur pour comprendre comment elle limite l'usage d'un mot de passe volé, le MFA combine au moins deux facteurs de familles différentes et la clé PKI que je prends en charge chez Orange me donne un cas concret à relier au Zero Trust.</p>
           <div class="vm-cols">
             <div>
-              <p class="k2">l'essentiel — pourquoi ça se développe</p>
+              <p class="k2">les trois familles de facteurs</p>
               <ul>
-                <li>Augmentation constante des cyberattaques par identifiants dérobés</li>
-                <li>Exigences de sécurité renforcées par la directive NIS2</li>
-                <li>Protection des comptes professionnels et des données</li>
-                <li>Intégration au modèle <b>Zero Trust</b> : vérifier chaque utilisateur et chaque accès, même à l'intérieur du réseau</li>
+                <li>ce que l'utilisateur sait, par exemple un mot de passe</li>
+                <li>ce qu'il possède, par exemple une clé USB ou un téléphone</li>
+                <li>ce qu'il est, par exemple une donnée biométrique</li>
+                <li>au moins deux familles différentes pour parler de MFA</li>
               </ul>
             </div>
             <div>
-              <p class="k2">chronologie</p>
+              <p class="k2">repères techniques</p>
               <ol class="vm-chrono">
-                <li><b>années 2010</b>Le MFA existe mais reste optionnel, réservé aux comptes sensibles — banques, administrations.</li>
-                <li><b>2024 — 2026</b>Sous l'effet conjugué des cyberattaques et de NIS2, il devient la norme sur les comptes professionnels.</li>
-                <li><b>à venir</b>Le Zero Trust généralise la vérification continue : plus aucun accès n'est fiable par défaut, même en interne.</li>
+                <li><b>clé PKI</b>la clé USB contient le certificat de l'utilisateur et correspond au facteur de possession.</li>
+                <li><b>Zero Trust</b>un accès n'est pas considéré comme fiable uniquement parce qu'il vient du réseau interne.</li>
+                <li><b>passkeys</b>ces identifiants sans mot de passe utilisent le déverrouillage de l'appareil et sont présentés dans mon dossier E5.</li>
               </ol>
             </div>
           </div>
-          <p class="k2">comment je l'applique</p>
-          <p style="color:var(--ink-2); margin-bottom:4px">Chez Orange, je m'authentifie avec une clé PKI : c'est du MFA en pratique — ce que je possède, plus ce que je sais. Je déploie ces protections sur les postes, je les explique aux utilisateurs, et je les reproduis dans mes maquettes d'infrastructure.</p>
-          <p class="q">« Cette technologie est utilisée dans les entreprises comme Orange pour sécuriser les comptes utilisateurs et protéger les systèmes informatiques. »</p>
+          <p class="k2">le contrôle que je réalise</p>
+          <p style="color:var(--ink-2); margin-bottom:4px">Chez Orange, je remplace ou débloque les clés PKI avec l'application « Ma Clé PKI », après un changement de poste, je fais ouvrir la session avec la clé puis je vérifie avec le salarié que son accès fonctionne avant de clôturer l'intervention.</p>
           <p class="k2">sources suivies</p>
           <div class="vm-src">
-            <a href="https://www.cyber.gouv.fr" target="_blank" rel="noopener">ANSSI ↗</a>
+            <a href="https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32022L2555" target="_blank" rel="noopener">EUR-Lex — directive (UE) 2022/2555 ↗</a>
             <a href="https://www.cert.ssi.gouv.fr" target="_blank" rel="noopener">CERT-FR ↗</a>
-            <a href="https://www.it-connect.fr" target="_blank" rel="noopener">IT-Connect ↗</a>
+            <a href="assets/pdf/dossier-e5.pdf#page=24" target="_blank" rel="noopener">Dossier E5 — veille technologique, page 24 ↗</a>
           </div>`
       },
       orange: {
@@ -633,69 +632,69 @@
           <div class="vm-meta">
             <span>type · alternance — service informatique</span>
             <span>période · sept. 2025 — aujourd'hui</span>
-            <span>périmètre · ≈ 1 200 utilisateurs</span>
+            <span>périmètre · ≈ 1 200 salariés</span>
           </div>
-          <p class="vm-why"><b>Le contexte.</b> Orange, grand groupe français des télécommunications et du numérique : internet, informatique, réseaux, téléphonie, cybersécurité. J'y effectue mon alternance au sein du service informatique, sous la tutelle de mon maître d'apprentissage, <b>M. Franck Pouilly</b> — au poste de technicien soutien de proximité.</p>
+          <p class="vm-why"><b>Mon terrain d'intervention</b>, j'effectue mon alternance dans le service informatique d'Orange à Marseille avec <b>M. Franck Pouilly</b> comme maître d'alternance, je prends en charge les utilisateurs à l'Espace Service, sur le site et en boutiques comme technicien soutien de proximité.</p>
           <div class="vm-cols">
             <div>
-              <p class="k2">ce que j'y fais — au quotidien</p>
+              <p class="k2">les actions que je mène</p>
               <ul>
-                <li>Support N1–N2 : diagnostic matériel et logiciel, clés PKI et migration des données</li>
-                <li>Déploiement de postes Windows 11 et gestion du stock informatique</li>
-                <li>Tickets INC / WO jusqu'au niveau 2, avec chaque intervention documentée</li>
-                <li>Brassage réseau, positions Flex et remplacement de terminaux iSMP</li>
-                <li>Ambassadeur digital : sensibilisation à la sécurité et inclusion numérique</li>
+                <li>diagnostiquer les incidents N1–N2 et intervenir sur les clés PKI</li>
+                <li>déployer les postes Windows 11 et transférer les données</li>
+                <li>inventorier le matériel et préparer les positions Flex</li>
+                <li>brasser les prises réseau et remplacer les terminaux iSMP</li>
+                <li>sensibiliser à la sécurité et à l'inclusion numérique</li>
               </ul>
             </div>
             <div>
-              <p class="k2">en chiffres</p>
+              <p class="k2">mon rythme de support</p>
               <ul>
                 <li><b>≈ 1 200</b> salariés dans mon périmètre de support</li>
                 <li><b>5–6</b> interventions par jour, sur site et en boutiques</li>
                 <li><b>N1–N2</b> niveaux de support traités à l'Espace Service</li>
               </ul>
-              <p class="k2" style="margin-top:18px">ce que ça produit</p>
+              <p class="k2" style="margin-top:18px">les preuves publiables</p>
               <ul>
-                <li>L'épreuve E5 : gestion patrimoniale, tickets INC / WO, clé PKI</li>
-                <li>Des procédures internes rédigées chez Orange — non publiables ici</li>
+                <li>le dossier E5 présente les interventions et leurs contrôles</li>
+                <li>les procédures internes rédigées chez Orange restent hors publication</li>
               </ul>
             </div>
           </div>
-          <p class="q">« Une intervention n'est terminée que lorsqu'elle est documentée. »</p>
+          <p class="k2">du diagnostic à la clôture</p>
+          <p style="color:var(--ink-2); margin-bottom:4px">Pour un remplacement de poste, j'installe Windows 11 avec la surcouche Eburo, je transfère les fichiers avec Transfert Tool puis je fais vérifier la session, les données, OneDrive, la messagerie et Teams avant de renseigner le résultat dans le ticket INC ou WO.</p>
           <div class="vm-src">
             <a href="#projets" data-goto="#projets">voir les projets professionnels E5 →</a>
           </div>`
       },
       bts: {
-        title: "BTS SIO option SISR — ce qu'on y fait vraiment",
+        title: "BTS SIO option SISR — formation et travaux pratiques",
         body: `
           <div class="vm-meta">
             <span>diplôme · BTS — bac +2</span>
             <span>option · SISR — solutions d'infrastructure, systèmes et réseaux</span>
             <span>période · 2025 — 2027 · en alternance</span>
           </div>
-          <p class="vm-why"><b>C'est quoi.</b> Le BTS Services informatiques aux organisations forme des techniciens capables de gérer l'infrastructure informatique d'une organisation. L'option <b>SISR</b>, c'est la partie infrastructure : serveurs, réseaux, virtualisation, sécurité, supervision — là où l'option SLAM fait du développement.</p>
+          <p class="vm-why"><b>Ce que je prépare</b>, je suis l'option <b>SISR</b> du BTS Services informatiques aux organisations pour administrer les systèmes et les réseaux, j'alterne les apports de l'IFC, les maquettes techniques et le support réel chez Orange.</p>
           <div class="vm-cols">
             <div>
-              <p class="k2">les blocs du métier</p>
+              <p class="k2">les compétences que je travaille</p>
               <ul>
-                <li>Administrer des serveurs — Windows Server, Active Directory</li>
-                <li>Concevoir, segmenter et sécuriser des réseaux</li>
-                <li>Virtualiser, superviser, masteriser</li>
-                <li>Supporter les utilisateurs — et consigner chaque intervention</li>
+                <li>administrer Windows Server et Active Directory</li>
+                <li>segmenter et filtrer les réseaux</li>
+                <li>virtualiser, superviser et masteriser les machines</li>
+                <li>supporter les utilisateurs et consigner les interventions</li>
               </ul>
             </div>
             <div>
-              <p class="k2">les épreuves pratiques</p>
+              <p class="k2">les épreuves documentées</p>
               <ul>
-                <li><b>E5</b> — projets professionnels réalisés en entreprise, chez Orange</li>
-                <li><b>E6</b> — travaux pratiques d'infrastructure, consignés en procédures</li>
+                <li><b>E5</b> réunit les réalisations professionnelles effectuées chez Orange</li>
+                <li><b>E6</b> présente l'administration de la maquette ImmoSud et ses plans de tests</li>
               </ul>
             </div>
           </div>
-          <p class="k2">concrètement, en laboratoire</p>
-          <p style="color:var(--ink-2); margin-bottom:4px">Réseau segmenté, <b>Active Directory</b> redondé avec GPO, messagerie Exchange, supervision Zabbix, GLPI (ITSM), VoIP Xivo, masterisation FOG, Wi-Fi UniFi, proxy Artica — chaque maquette est consignée en procédure : c'est toute la section documentation de ce site.</p>
-          <p class="q">« Le laboratoire reproduit l'entreprise : on y casse, on répare — et on écrit. »</p>
+          <p class="k2">ce que je manipule en laboratoire</p>
+          <p style="color:var(--ink-2); margin-bottom:4px">Sur mes maquettes de l'IFC, je configure pfSense, Snort et les équipements Cisco, je déploie un contrôleur de domaine et un serveur membre, j'administre les stratégies de groupe, Exchange, Zabbix, Xivo, FOG, UniFi et Artica puis je joins les tests aux procédures, GLPI fait l'objet d'une procédure autonome.</p>
           <div class="vm-src">
             <a href="#documentation" data-goto="#documentation">voir la documentation E6 →</a>
           </div>`
@@ -1167,7 +1166,7 @@
       if (!current.length) {
         status.textContent = "aucun résultat";
         const empty = make("div", "proof-empty");
-        empty.appendChild(make("p", "", "Aucune preuve trouvée."));
+        empty.appendChild(make("p", "", "Aucun contenu trouvé."));
         empty.appendChild(make("span", "", "Essayez un terme plus court ou l’une de ces pistes."));
         const suggestions = make("div", "proof-suggestions");
         ["VLAN", "GLPI", "Orange", "NIS2"].forEach((word) => {
@@ -1416,68 +1415,105 @@
     update();
   }
 
-  /* ---------- flux RSS en direct (CERT-FR) ---------- */
+  /* ---------- avis CERT-FR : RSS2JSON avec copie locale de secours ---------- */
   const live = document.getElementById("liveJournal");
   if (live) {
+    const status = document.getElementById("certfrStatus");
     const FEED = "https://www.cert.ssi.gouv.fr/feed/";
+    const API = "https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(FEED);
+    const HOME = "https://www.cert.cyber.gouv.fr/";
+    let localReady = false;
+    let onlineReady = false;
+    let snapshotDate = "25 octobre 2026";
+    const setStatus = (text) => { if (status) status.textContent = text; };
     const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
     const strip = (h) => {
-      const t = document.createElement("div");
-      t.innerHTML = h || "";
-      const txt = (t.textContent || "").trim();
+      const t = document.createElement("textarea");
+      t.innerHTML = String(h || "");
+      const txt = t.value.replace(/\s+/g, " ").trim();
       if (txt.length <= 240) return txt;
       const c = txt.slice(0, 240);
       return c.slice(0, c.lastIndexOf(" ")).trimEnd() + "…";
     };
-    const fmtDate = (d) => {
+    const fmtDate = (d, long) => {
+      const day = String(d || "").match(/^(\d{4})-(\d{2})-(\d{2})/);
+      const date = day
+        ? new Date(Date.UTC(Number(day[1]), Number(day[2]) - 1, Number(day[3]), 12))
+        : new Date(d);
+      if (Number.isNaN(date.getTime())) return "";
+      return new Intl.DateTimeFormat("fr-FR", {
+        day: "numeric", month: long ? "long" : "short", year: "numeric", timeZone: "UTC"
+      }).format(date);
+    };
+    const officialLink = (value) => {
       try {
-        return new Intl.DateTimeFormat("fr-FR", { day: "2-digit", month: "short", year: "numeric" }).format(new Date(d));
-      } catch { return ""; }
+        const url = new URL(value);
+        const hosts = ["cert.cyber.gouv.fr", "www.cert.cyber.gouv.fr", "cert.ssi.gouv.fr", "www.cert.ssi.gouv.fr"];
+        return url.protocol === "https:" && hosts.includes(url.hostname) ? url.href : HOME;
+      } catch { return HOME; }
     };
     const render = (items) => {
       live.innerHTML = "";
-      items.sort((a, b) => new Date(b.date) - new Date(a.date));
-      items.slice(0, 5).forEach((it) => {
+      [...items].sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 5).forEach((it) => {
         const row = document.createElement("div");
         row.className = "jrow";
-        const safe = /^(https?:)?\/\//.test(it.link) ? it.link : "https://www.cert.ssi.gouv.fr";
         row.innerHTML =
           `<span class="jdate">${esc(fmtDate(it.date))}</span>` +
           `<span class="jtag t">cert-fr</span>` +
           `<div class="jbody"><b>${esc(it.title)}</b><p>${esc(it.desc)}</p></div>` +
-          `<span class="jsrc">source : <a href="${esc(safe)}" target="_blank" rel="noopener">lire l'avis complet</a></span>`;
+          `<span class="jsrc">source : <a href="${esc(officialLink(it.link))}" target="_blank" rel="noopener">lire l'avis complet</a></span>`;
         live.appendChild(row);
       });
     };
-    const viaRss2Json = fetch("https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(FEED))
-      .then((r) => r.json())
+
+    const localTask = fetch("assets/data/certfr.json")
+      .then((r) => {
+        if (!r.ok) throw new Error("copie locale indisponible");
+        return r.json();
+      })
       .then((j) => {
-        if (j.status !== "ok" || !j.items || !j.items.length) throw new Error("rss2json");
-        return j.items.map((i) => ({ title: i.title, link: i.link, date: i.pubDate, desc: strip(i.description) }));
-      });
-    const viaAllOrigins = fetch("https://api.allorigins.win/raw?url=" + encodeURIComponent(FEED))
-      .then((r) => r.text())
-      .then((x) => {
-        const doc = new DOMParser().parseFromString(x, "text/xml");
-        const items = [...doc.querySelectorAll("item")];
-        if (!items.length) throw new Error("allorigins");
-        const q = (el, s) => {
-          const n = el.querySelector(s);
-          return n && n.textContent ? n.textContent : "";
-        };
-        return items.map((it) => ({
-          title: q(it, "title"),
-          link: q(it, "link"),
-          date: q(it, "pubDate"),
-          desc: strip(q(it, "description")),
-        }));
-      });
-    /* 1) capture locale des derniers avis : affichage immédiat, jamais hors-ligne ;
-       2) tentative de mise à jour en direct par-dessus — si elle échoue, la capture reste */
-    fetch("assets/data/certfr.json")
-      .then((r) => (r.ok ? r.json() : Promise.reject(new Error("snapshot"))))
-      .then((j) => { if (j.items && j.items.length) render(j.items); })
+        if (!j.items || !j.items.length) throw new Error("copie locale vide");
+        localReady = true;
+        snapshotDate = fmtDate(j.updated, true) || snapshotDate;
+        if (!onlineReady) {
+          render(j.items);
+          setStatus(`avis du CERT-FR enregistrés le ${snapshotDate}, en attendant leur actualisation, chaque entrée renvoie vers l'avis officiel.`);
+        }
+      })
       .catch(() => {});
-    viaRss2Json.catch(() => viaAllOrigins).then(render).catch(() => {});
+
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 12000);
+    const onlineTask = fetch(API, { signal: controller.signal, cache: "no-store" })
+      .then((r) => {
+        if (!r.ok) throw new Error("RSS2JSON indisponible");
+        return r.json();
+      })
+      .then((j) => {
+        if (j.status !== "ok" || !j.items || !j.items.length) throw new Error("flux RSS2JSON invalide");
+        const items = j.items.map((i) => ({
+          title: i.title || "Avis CERT-FR",
+          link: i.link || HOME,
+          date: i.pubDate,
+          desc: strip(i.description)
+        })).filter((i) => i.date);
+        if (!items.length) throw new Error("aucun avis exploitable");
+        onlineReady = true;
+        render(items);
+        const time = new Intl.DateTimeFormat("fr-FR", { hour: "2-digit", minute: "2-digit" }).format(new Date());
+        setStatus(`derniers avis du CERT-FR actualisés à ${time}, chaque entrée renvoie vers l'avis officiel.`);
+      })
+      .catch(() => {})
+      .finally(() => clearTimeout(timeout));
+
+    Promise.allSettled([localTask, onlineTask]).then(() => {
+      if (onlineReady) return;
+      if (localReady) {
+        setStatus(`actualisation indisponible, les avis enregistrés le ${snapshotDate} restent affichés et chaque entrée renvoie vers l'avis officiel.`);
+      } else {
+        live.innerHTML = `<p class="note">chargement impossible, les avis restent accessibles sur le <a href="${HOME}" target="_blank" rel="noopener">site officiel du CERT-FR</a>.</p>`;
+        setStatus("les derniers avis n'ont pas pu être chargés, le site officiel du CERT-FR reste accessible.");
+      }
+    });
   }
 })();
