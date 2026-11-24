@@ -1419,7 +1419,7 @@
   const live = document.getElementById("liveJournal");
   if (live) {
     const status = document.getElementById("certfrStatus");
-    const FEED = "https://www.cert.ssi.gouv.fr/feed/";
+    const FEED = "https://cert.cyber.gouv.fr/feed/";
     const API = "https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(FEED);
     const HOME = "https://www.cert.cyber.gouv.fr/";
     let localReady = false;
@@ -1466,7 +1466,7 @@
       });
     };
 
-    const localTask = fetch("assets/data/certfr.json")
+    const localTask = fetch("assets/data/certfr.json", { cache: "no-cache" })
       .then((r) => {
         if (!r.ok) throw new Error("copie locale indisponible");
         return r.json();
@@ -1484,7 +1484,7 @@
 
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 12000);
-    const onlineTask = fetch(API, { signal: controller.signal, cache: "no-store" })
+    const onlineTask = fetch(API, { signal: controller.signal })
       .then((r) => {
         if (!r.ok) throw new Error("RSS2JSON indisponible");
         return r.json();

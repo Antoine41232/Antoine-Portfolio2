@@ -8,8 +8,8 @@
     "total": 22
   },
   "dossier-e6": {
-    "preview": 99,
-    "total": 99
+    "preview": 86,
+    "total": 86
   },
   "tp-cyberpeak": {
     "preview": 89,
@@ -74,5 +74,9 @@
   "vm-proxmox": {
     "preview": 7,
     "total": 7
+  },
+  "openvpn": {
+    "preview": 12,
+    "total": 12
   }
 }
